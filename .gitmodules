@@ -1,0 +1,6 @@
+[submodule "FrontEnd"]
+	path = FrontEnd
+	url = git://github.com/MoodCat/MoodCat.me-FrontEnd.git
+[submodule "Core"]
+	path = Core
+	url = git://github.com/MoodCat/MoodCat.me-Core.git
