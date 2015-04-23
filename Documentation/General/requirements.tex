@@ -34,7 +34,7 @@ MoodCat\\
 
 \chapter*{Functional requirements}
 \begin{table}[h]
-\begin{tabular}{|p{1cm}|p{3cm}|p{14cm}|}
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{14cm}|}
 \textbf{\#} & \textbf{Name} & \textbf{Description} \\
          & \textbf{\textit{Website}} &  \\
    	  1.1   & front page & When the user is not logged in and visits the homepage, he should be redirected to the log-in screen.
@@ -57,6 +57,20 @@ MoodCat\\
 \end{table}
 	
 \chapter*{Non-functional requirements}
+
+\begin{table}[h]
+\begin{tabular}{|p{0.5cm}|p{3.5cm}|p{14cm}|}
+\textbf{\#} & \textbf{Name} & \textbf{Description} \\
+	  1.1 & versioning & Git will be used as a versioning system.\\
+	  1.2 & pulling & For every new feature a pull request is made. When a pull request has fulfilled all the requirements below it's accepted.      \\
+      1.3 & test coverage & At all times a test coverage of more than 80\% must be maintained on the core. On the frond-end we try to test as much as possible. We will do exhaustive manual testing on every new feature.\\
+      1.4 & Checkstyle warnings & Whenever a Pull request is submitted, it is not allowed to add more than 5 Checkstyle warnings compared to master.\\
+      1.5 & continuous integration & Maven and Travis CI will be used for continuous integration and can't fail.\\
+      1.6 & Javadoc on classes & Every class must be javadoc-ed witch summarizes the responsibilities and refers to all classes it depends on.\\
+      1.7 & Javadoc on methods & Every method must be javadoc-ed witch tells the responsibilities,parameters and return value of the function.\\
+      1.8 & issues & Github issues must be used in combination with waffle.io (witch uses github issues).\\
+\end{tabular}
+\end{table}
 
 
 
