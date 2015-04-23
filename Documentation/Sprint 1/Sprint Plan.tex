@@ -14,24 +14,127 @@ Group : Multimedia services 1\\
 
 
 \begin{table}[h]
-\begin{tabular}{|p{6cm}|p{5.5cm}|p{4cm}|p{3cm}|}
+\begin{tabular}{|p{4.5cm}|p{7cm}|p{4cm}|p{2cm}|}
 \textbf{User Story} & \textbf{Task} & \textbf{Task assigned to} & \textbf{Estimated Effort per Task} \\
-User Story 1 description & \begin{enumerate}
-\item task 1
-\item task 2
-\item task 3
+As a User, I want to be able to log into MoodCat.me & \begin{enumerate}
+\item Set up Vagrant box to ensure the same dependency setup is maintained between project team members.
+\item Set up AngularJS application that serves as the basis of MoodCat.me.
+\item Set up a login homepage and a page for logged in users.
+\item Connect the AngularJS application with the soundcloud API to log in the user.
 \end{enumerate}
 
 & 
 \begin{enumerate}
-\item member task 1
-\item member task 2
-\item member task 3
+\item Gijs Weterings
+\item Gijs Weterings
+\item Jan-Willem Gmelig Meyling
+\item Jaap Heijligers 
 \end{enumerate}
 
 & 
-estimated time \\
+\begin{enumerate}
+\item 2 hours
+\item 3 hours
+\item 2 hours
+\item 3 hours
+\end{enumerate} \\
 
+As a User, I want to be able to play music on MoodCat.me & \begin{enumerate}
+\item Create a (temporary) .json file containing song data of a mocked room
+\item Create a HTML5 audio player 
+\item Load the song into the HTML5 audio player trough the soundcloud api
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Eva Anker
+\item TO BE DETERMINED
+\item Jaap Heijligers
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 1 hour
+\item 4 hours
+\item 4 hours
+\end{enumerate} \\
+
+As a Developer, I want to be able to run Algorithms on a server-side platform & \begin{enumerate}
+\item Decide on Backend language.
+\item Find appropriate frameworks to couple front- and backend.
+\item Test interaction between front- and backend services.
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Lead by Eva Anker
+\item Lead by Tim van der Lippe
+\item Lead by Eva Anker
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 1.5 hours
+\item 4 hours
+\item 6 hours
+\end{enumerate} \\
+
+As a Developer, I want to be able to store and use the data provided by Soundcloud. & \begin{enumerate}
+\item Analyse the data provided to determine which parts of the data we will use in our application.
+\item Create a tool to extract this data from the big dump.
+\item Create a reader for the server to load the extracted data to a usable format
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Tim van der Lippe
+\item Tim van der Lippe
+\item Jan-Willem Gmelig Meyling
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 1.5 hours
+\item 4 hours
+\item 3 hours
+\end{enumerate} \\
+
+As a Developer, I want to have a well defined interface for any data mining algorithms we will use & \begin{enumerate}
+\item Turn basic recommender system made by Tim van der Lippe into a library form.
+\item Train eachother how to use the recommender system properly.
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Tim van der Lippe
+\item Lead by Tim van der Lippe, all participate
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 4 hours
+\item 3 hours
+\end{enumerate} \\
+
+As a Developer, I want to prepare our backend to be able to provide a chat system for a Mood Room & \begin{enumerate}
+\item Research optimal method of message passing between server and frontend(s)
+\item Implement Chat API
+\item Unit test Chap API
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Eva Anker
+\item Eva Anker
+\item Jan-Willem Gmelig Meyling
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 3 hours
+\item 8 hours
+\item 6 hours
+\end{enumerate} \\
            
 \end{tabular}
 \end{table}
