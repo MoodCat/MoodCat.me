@@ -21,6 +21,7 @@ MoodCat\\
 \vfill
 \rule{16cm}{5pt}
 }
+\author{MoodCat.me}
 \date{}
 \usepackage{hyperref}
 \usepackage[top=2 cm, bottom= 2 cm, left=1 cm, right=1 cm]{geometry}
@@ -35,25 +36,23 @@ MoodCat\\
 \begin{table}[h]
 \begin{tabular}{|p{1cm}|p{3cm}|p{14cm}|}
 \textbf{\#} & \textbf{Name} & \textbf{Description} \\
-      1.0   & \textbf{\textit{Website}} &  \\
-   	  1.1   & front page & When the user comes at the website the user gets a screen to sign in.
-   	   If the user is done or the logging in is completed the user is redirected to the choose mood page.  \\
-      1.2   & choose mood page & On this page the user can choose it's mood or click the "what's my mood" button.\\
-      1.3   & what's my mood & When the user isn't sure what mood he is in, he can do a quiz in which he finds out in which room he should be placed. \\
-      1.4  	& chat room & When a user has chosen it's mood it comes in a chat room to listen music together. 
-      		 There then can chat about the music. \\   
+         & \textbf{\textit{Website}} &  \\
+   	  1.1   & front page & When the user is not logged in and visits the homepage, he should be redirected to the log-in screen.
+   	   When the user is logged in, the user is redirected to the mood-selection page.  \\
+      1.2   & mood-selection page & On this page the user can select his mood. When the user selected his mood, he gets redirected to a chat room with this mood.\\
+      1.3  	& chat room & When the user enters a chat room, he gets songs served that are for his current mood. \\   
       		 
-      2.0 	& \textbf{\textit{Chat room}} & \\
-	  2.1   & play & In the chat room there plays music depending on the mood of the room. This is al music from soundcloud.\\
-	  2.2   & vote to skip & When a user doesn't like this music it can ask to skip the music. If enough people want to skip this, the number is skipped. \\
-	  2.3   & switch & Switch from chat room if the room doesn't fits your mood. \\
-	  2.4   & split  & Split the chat room in 2 if there are 2 groups of people depending on skips. \\
-	  3.0	& \textbf{\textit{Learning Algorithm}} & \\
-	  3.1   & perceptron & We use a multilayer perceptron to predict the mood of a song. \\
-	  3.2   & recommender system & We use a recommender system to predict if a song should be played in a certain room. \\  
-      4.0   & \textbf{\textit{Gamification}} &  \\
-      4.1   & achievements  & An user gets achievements if he fulfils the requirement.     \\
-      4.2   & awards  & At a certain amount of contribution you get awards in terms of adding a song to a room and more. This certain amount is to be determined.            
+       	& \textbf{\textit{Chat room}} & \\
+	  2.1   & listening & The chat room plays music depending on the mood of the room. The songs are streamed from SoundCloud.\\
+	  2.2   & vote to skip & When a user doesn't like the song currently streamed in the chat room, he can vote to skip the song. If enough people want to skip the current song, the next song is streamed to all users in the room. \\
+	  2.3   & user management  & If there are too many people in a chat room, half of the users are redirected to a new chat room. \\
+	  	& \textbf{\textit{Learning Algorithm}} & \\
+	  3.1   & perceptron & We use a multilayer perceptron to predict the mood of a song. The perceptron is trained on song-data received from EEMCS.\\
+	  3.2   & recommender system & We use a recommender system to select the next song that should be played in a chat room. \\  
+         & \textbf{\textit{Gamification}} &  \\
+      4.1   & achievements  & The user can earn achievements if he fulfils various requirements related to the achievement.     \\
+      4.2	& user contribution & The user can contribute to the recommender system and receive points in return. \\ 
+      4.3   & awards  & At a various levels for user points, the user receives awards.
 \end{tabular}
 \end{table}
 	
