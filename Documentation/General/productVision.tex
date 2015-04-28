@@ -6,7 +6,7 @@
 \usepackage{cite}
 \usepackage{hyperref}
 \usepackage{graphicx}
-
+\usepackage{siunitx}
 
 \begin{document}
 
@@ -73,7 +73,7 @@ Therefore long-term users are served more suitable rooms which increases their o
 \end{enumerate}
 
 \section{Which components should MoodCat have?}
-MoodCat will be developed as three seperate componentents: the frontend, the backend and a special music matching algorithm.
+MoodCat will be developed as three separate componentents: the frontend, the backend and a special music matching algorithm.
 
 \begin{enumerate}
 \item The frontend will be the visible part for the listener.
@@ -99,7 +99,7 @@ This allows us to integrate with the Soundcloud platform and prevents having to 
 
 \subsection{Backend}
 
-The MoodCat backend will be a RESTful API written in Java using JAX-RS. It will be backed by a relational (PostgreSQL) database. The backend connects the frontend to the music matching algorithm.
+The MoodCat backend will be a RESTful\cite{rest} API written in Java using JAX-RS. It will be backed by a relational (PostgreSQL) database. The backend connects the frontend to the music matching algorithm.
 
 \subsection{Music matching algorithm}
 
@@ -110,11 +110,14 @@ Default values will be determined by examining the audio features provided by ou
 Then, through a system of user votes, the system will learn and improve over time.
 
 We discovered that moods and emotions can be mapped to a valence/arousal space (see figure \ref{fig:avgraph}).
-This graph appears to be used in a lot of scientifical papers \cite{Kosina} \cite{McVicar}.
+% This graph has been of interest for some scientifical papers \cite{Kosina} \cite{McVicar}.
+%     The references are unrelated. Also this sentence seems a bit unnecessary in the story
 
 \begin{figure}[h]
+\center
 \includegraphics[scale=0.75]{avgraph.jpg}
 \caption{The valance/arousal graph \cite{Book}}
+\endcenter
 \label{fig:avgraph}
 
 \end{figure}
@@ -124,8 +127,8 @@ Arousal means how calm or excited you are.
 Valence is the amount of attraction you have towards a certain event.
 
 In order to use arousal and valence, we have to express them in terms of music features.
-For valence we can use harmony \cite{PresentationMER},mode  \cite{PresentationMER} and tonality  \cite{PresentationMER}.
-For arousal we can use pitch \cite{PresentationMER} ,timbre \cite{PresentationMER}, tempo \cite{PresentationMER} and loudness \cite{PaperME}.
+For valence we can use harmony, mode and tonality.
+For arousal we can use pitch, timbre, speed and loudness \cite{PresentationMER}\cite{PaperME}.
 
 \newpage
 
@@ -133,40 +136,24 @@ The data of EEMCS does not explicitly provide the above features. However, we ca
 
 The low-level features we can use for valence:
 \begin{enumerate}
-\item For harmony we can use the dissonance of a song.
-\item To determine the mode of a song, we can use the key of the key.
+\item For harmony we can use the consonance and dissonance of a song.
+\item To determine the mode of a song, we can use the key, key scale and key strength from the data.
+The key strength also tells a bit about the tonality of the song.
+When the key strength approaches 1, we can speak of tonality. When the key strength approaches 0, we can speak of atonality.
 \end{enumerate}
 The low-level features we can use for arousal:
 \begin{enumerate}
-\item BMP gives us the tempo of a song.
+\item Beats-per-minute (BPM) gives us the tempo of a song.
 \item Loudness can be directly retrieved from the loudness feature.
+\item Pitch can be direved from the tuning frequency, which is standardized at \SI{440}{\hertz} but may vary depending on music genre, era and geography.
 \end{enumerate}
 
-The timbre of a song is a separate research field and is too difficult to integrate into our system.
-
-Even so we couldn't find a low level feature in the dataset that describes the pitch of a song.
-We did find 'pitch salience', however this only describes whether a song is pitched or not.
-This does not give any information on how low or high the pitch of the song is.
-Something similar can be said for tonality, we have a whole section about this, but it doesn't say if it's tonal or atonal.
-
+The timbre of a song is a separate research field and would be too difficult to integrate into our system.
 
 %
 % BIBLIOGRAPHY
 %
-
-\begin{thebibliography}{10}
-\bibitem{PlugDJ} http://www.plug.dj
-\bibitem{Youtube} http://www.youtube.com
-\bibitem{Twitch} http://www.twitch.tv
-\bibitem{HTML} http://www.w3.org/TR/html5/
-\bibitem{CSS} http://www.w3.org/Style/CSS/
-\bibitem{AngularJS} http://www.angularjs.org
-\bibitem{Kosina} http://www.music.mcgill.ca/~ich/classes/mumt614/similarity/KosinaMusicGenreRec.pdf
-\bibitem{McVicar} http://www.mattmcvicar.com/wp-content/uploads/2010/12/ismir2011\_writeup.pdf
-\bibitem{PresentationMER} Chen, H. H. (2013). Music Emotion Recognition [pdf]. http://www2.ensc.sfu.ca/~ljilja/cnl/guests/Music.pdf
-\bibitem{PaperME} http://cisaweb.unige.ch/drupal/system/files/biblio/emo-11-4-921.pdf
-\bibitem{Book} Chang,Y. and Chen,H.H. (2011) Music Emotion Recognition. Boca raton, State: CRC Press %https://www.google.com.tr/books?hl=en&lr=&id=qnjRBQAAQBAJ&oi=fnd&pg=PP1&dq=music+mood+recognition&ots=0HTz4SBc2J&sig=9VEW6tZRGeOwGnuhTRYbO453_2U&redir_esc=y#v=onepage&q=music%20mood%20recognition&f=false
-
-\end{thebibliography}
+\bibliography{productVision}{}
+\bibliographystyle{plain}
 
 \end{document}
