@@ -22,7 +22,7 @@
 \section{Why should we build MoodCat?}
 Various competitors provide a system that can offer users popular songs or songs that are similar to songs the user already listened to.
 These recommendations mostly consist of songs that are popular or users with simmilar preferences listened to.
-This leaves a tremendous chunk of music produced by a lot of artists undiscovered.
+This leaves a huge amount of music produced by a lot of artists undiscovered.
 
 Secondly, most music platforms do not offer user interaction.
 Some competitors offer users rooms to socialize while experiencing songs.
@@ -41,9 +41,9 @@ Music rooms never fall silent, instead they are continuously filled with relevan
 Our target audience consists of (but not limiting to) the following persons:
 
 \begin{enumerate}
-\item Everyone who wants to listen to music without the hassle of searching suitable songs for their current mood/preferences.
+\item Everyone who wants to listen to music without the hassle of searching suitable songs for both their musical preference and current mood.
 
-\item Everyone who wants to discover and listen to songs they haven't heard yet.
+\item Everyone who wants to discover and listen to songs they have not heard yet.
 
 \item Everyone who wants to listen to and experience songs and share this experience with fellow listeners in the same online room.
 
@@ -55,14 +55,15 @@ MoodCat has several selling points that would make it unique in the current musi
 
 \begin{enumerate}
 \item MoodCat is self-maintaining, which makes it possible to handle audience sizes from one to one thousand.
-This makes it possible to use the system no matter how many other users are currently online.
+This makes it possible to use the service no matter how many other users are currently online.
 
 \item MoodCat offers users both to experience solely or communicate with fellow music listeners.
 
-\item The system already works without this user input as specific interpretation of audio features allow us to find similar songs.
-The system is able to offer relevant songs using the specified current mood of the user.
+\item The system already works without user input as specific interpretation of audio features allow us to find similar songs.
 
-\item With MoodCat unknown/lesser known artists have equal chances to let their songs be played.
+\item The system is able to offer relevant songs using the specified current mood of the user.
+
+\item With MoodCat unknown or lesser known artists have equal chances to let their songs be played.
 This is a result of the system choosing songs based on features and is therefore unbiased regarding play counts.
 
 \item MoodCat can determine mood trends of a long-term user and can adjust the room-ordering mechanism accordingly.
@@ -90,7 +91,11 @@ It has two roles: list the room suggestions for a user and provide the next song
 
 \subsection{Frontend}
 
-The MoodCat frontend will be web-based. This allows us to support all modern devices which enables a large target audience. We will develop the frontend using modern techniques as HTML5, CSS3 and AngularJS. Users can login using their Soundcloud account. This allows us to integrate with the Soundcloud platform and prevents having to register for our services first.
+The MoodCat frontend will be web-based.
+This allows us to support all modern devices which enables a large target audience.
+We will develop the frontend using modern techniques as HTML5\cite{HTML}, CSS3\cite{CSS} and AngularJS\cite{AngularJS}.
+Users can login using their Soundcloud account.
+This allows us to integrate with the Soundcloud platform and prevents having to register for our services first.
 
 \subsection{Backend}
 
@@ -98,8 +103,14 @@ The MoodCat backend will be a RESTful API written in Java using JAX-RS. It will 
 
 \subsection{Music matching algorithm}
 
-During our research about mapping music to emotions/moods, we discovered the valence/arousal graph (see figure \ref{fig:avgraph}).
-This graph appears to be used in a lot of scientifical projects.
+The Music matching algorithm determines and compares moods for songs, rooms and users.
+Moodcat will be developed around a learning algorithm.
+This means that Moodcat will improve over time.
+Default values will be determined by examining the audio features provided by our data set.
+Then, through a system of user votes, the system will learn and improve over time.
+
+We discovered that moods and emotions can be mapped to a valence/arousal space (see figure \ref{fig:avgraph}).
+This graph appears to be used in a lot of scientifical papers \cite{Kosina} \cite{McVicar}.
 
 \begin{figure}[h]
 \includegraphics[scale=0.75]{avgraph.jpg}
@@ -118,7 +129,7 @@ For arousal we can use pitch \cite{PresentationMER} ,timbre \cite{PresentationME
 
 \newpage
 
-The data of EEMCS does not explicitly provide the above features. However, we can extract them from the low-level features the data does provide.
+The data of EEMCS does not explicitly provide the above features. However, we can extract some of them from the low-level features the data does provide.
 
 The low-level features we can use for valence:
 \begin{enumerate}
@@ -146,6 +157,11 @@ This does not give any information on how low or high the pitch of the song is.
 \bibitem{PlugDJ} http://www.plug.dj
 \bibitem{Youtube} http://www.youtube.com
 \bibitem{Twitch} http://www.twitch.tv
+\bibitem{HTML} http://www.w3.org/TR/html5/
+\bibitem{CSS} http://www.w3.org/Style/CSS/
+\bibitem{AngularJS} http://www.angularjs.org
+\bibitem{Kosina} http://www.music.mcgill.ca/~ich/classes/mumt614/similarity/KosinaMusicGenreRec.pdf
+\bibitem{McVicar} http://www.mattmcvicar.com/wp-content/uploads/2010/12/ismir2011\_writeup.pdf
 \bibitem{PresentationMER} Chen, h. H. (2013). Music Emotion Recognition [pdf]. http://www2.ensc.sfu.ca/~ljilja/cnl/guests/Music.pdf
 \bibitem{PaperME} http://cisaweb.unige.ch/drupal/system/files/biblio/emo-11-4-921.pdf (p. 924)
 \bibitem{Book} Chang,Y. and Chen,H.H. (2011) Music Emotion Recognition. Boca raton, State: CRC Press %https://www.google.com.tr/books?hl=en&lr=&id=qnjRBQAAQBAJ&oi=fnd&pg=PP1&dq=music+mood+recognition&ots=0HTz4SBc2J&sig=9VEW6tZRGeOwGnuhTRYbO453_2U&redir_esc=y#v=onepage&q=music%20mood%20recognition&f=false
