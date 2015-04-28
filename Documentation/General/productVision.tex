@@ -5,6 +5,8 @@
 \usepackage{amssymb}
 \usepackage{cite}
 \usepackage{hyperref}
+\usepackage{graphicx}
+
 
 \begin{document}
 
@@ -96,12 +98,49 @@ The MoodCat backend will be a RESTful API written in Java using JAX-RS. It will 
 
 \subsection{Music matching algorithm}
 
+When researching about mapping music to emotions/moods we came across the valence/arousal graph \ref{fig:avgraph} \cite{Book}.
+This graph came back in a lot of other sources as well.
+
+\begin{figure}[h]
+\includegraphics[scale=0.75]{avgraph.jpg}
+\caption{The valance/arousal graph \cite{Book}}
+\label{fig:avgraph}
+
+\end{figure}
+
+Arousal and valence are physiological terms, where arousal means the state of being awake and valence is the amount of how attracted we are to a certain event. 
+
+We still needed to express valence and arousal in terms of musical features. 
+For valence that are harmony \cite{PresentationMER},mode  \cite{PresentationMER} and tonality  \cite{PresentationMER}.
+For arousal otherwise pitch \cite{PresentationMER} ,timbre \cite{PresentationMER}, tempo \cite{PresentationMER} and loudness \cite{PaperME}. 
+
+We still need to express those musical features to the given low-level features that we got.
+
+For the features from valence that are dissonance for the harmony, the key for the mode and tonal for the tonality.
+Otherwise for the features from arousal bmp for tempo and loudness for loudness.\\
+
+To determine the timbre of a song is a study on itself, therefore we decided that we didn't want to use this as a feature to determine the arousal.
+For pitch we couldn't find a low level feature in the dataset that describes the pitch of a song. We have the pitch salience, but that describes if a song is pitched. We want to know if it's pitched how high or low pitched it is. 
+
+
+
+
+
+
+
+
+
+
 
 
 \begin{thebibliography}{10}
 \bibitem{PlugDJ} http://www.plug.dj
 \bibitem{Youtube} http://www.youtube.com
 \bibitem{Twitch} http://www.twitch.tv
+\bibitem{PresentationMER} Chen, h. H. (2013). Music Emotion Recognition [pdf]. http://www2.ensc.sfu.ca/~ljilja/cnl/guests/Music.pdf
+\bibitem{PaperME} http://cisaweb.unige.ch/drupal/system/files/biblio/emo-11-4-921.pdf (p. 924)
+\bibitem{Book} Chang,Y. and Chen,H.H. (2011) Music Emotion Recognition. Boca raton, State: CRC Press %https://www.google.com.tr/books?hl=en&lr=&id=qnjRBQAAQBAJ&oi=fnd&pg=PP1&dq=music+mood+recognition&ots=0HTz4SBc2J&sig=9VEW6tZRGeOwGnuhTRYbO453_2U&redir_esc=y#v=onepage&q=music%20mood%20recognition&f=false
+
 \end{thebibliography}
 
 \end{document}
