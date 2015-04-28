@@ -98,8 +98,8 @@ The MoodCat backend will be a RESTful API written in Java using JAX-RS. It will 
 
 \subsection{Music matching algorithm}
 
-When researching about mapping music to emotions/moods we came across the valence/arousal graph \ref{fig:avgraph} \cite{Book}.
-This graph came back in a lot of other sources as well.
+During our research about mapping music to emotions/moods, we discovered the valence/arousal graph (see figure \ref{fig:avgraph}).
+This graph appears to be used in a lot of scientifical projects.
 
 \begin{figure}[h]
 \includegraphics[scale=0.75]{avgraph.jpg}
@@ -108,30 +108,39 @@ This graph came back in a lot of other sources as well.
 
 \end{figure}
 
-Arousal and valence are physiological terms, where arousal means the state of being awake and valence is the amount of how attracted we are to a certain event. 
+Arousal and valence are physiological terms.
+Arousal means how calm or excited you are.
+Valence is the amount of attraction you have towards a certain event.
 
-We still needed to express valence and arousal in terms of musical features. 
-For valence that are harmony \cite{PresentationMER},mode  \cite{PresentationMER} and tonality  \cite{PresentationMER}.
-For arousal otherwise pitch \cite{PresentationMER} ,timbre \cite{PresentationMER}, tempo \cite{PresentationMER} and loudness \cite{PaperME}. 
+In order to use arousal and valence, we have to express them in terms of music features.
+For valence we can use harmony \cite{PresentationMER},mode  \cite{PresentationMER} and tonality  \cite{PresentationMER}.
+For arousal we can use pitch \cite{PresentationMER} ,timbre \cite{PresentationMER}, tempo \cite{PresentationMER} and loudness \cite{PaperME}.
 
-We still need to express those musical features to the given low-level features that we got.
+\newpage
 
-For the features from valence that are dissonance for the harmony, the key for the mode and tonal for the tonality.
-Otherwise for the features from arousal bmp for tempo and loudness for loudness.\\
+The data of EEMCS does not explicitly provide the above features. However, we can extract them from the low-level features the data does provide.
 
-To determine the timbre of a song is a study on itself, therefore we decided that we didn't want to use this as a feature to determine the arousal.
-For pitch we couldn't find a low level feature in the dataset that describes the pitch of a song. We have the pitch salience, but that describes if a song is pitched. We want to know if it's pitched how high or low pitched it is. 
+The low-level features we can use for valence:
+\begin{enumerate}
+\item For harmony we can use the dissonance of a song.
+\item To determine the key of a song, we can use the mode.
+\item Finally the tonal provides the information to obtain the tonality.
+\end{enumerate}
+The low-level features we can use for arousal:
+\begin{enumerate}
+\item BMP gives us insight of the tempo of a song
+\item Loudness can be directly retrieved from the loudness feature.
+\end{enumerate}
 
+The timbre of a song is a seperate research field and is too difficult to integrate into our system.
 
+Even so we couldn't find a low level feature in the dataset that describes the pitch of a song.
+We did find 'pitch salience', however this only describes whether a song is pitched or not.
+This does not give any information on how low or high the pitch of the song is.
 
-
-
-
-
-
-
-
-
+%
+% BIBLIOGRAPHY
+%
 
 \begin{thebibliography}{10}
 \bibitem{PlugDJ} http://www.plug.dj
