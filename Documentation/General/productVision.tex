@@ -3,6 +3,9 @@
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
+\usepackage{cite}
+\usepackage{hyperref}
+
 \begin{document}
 
 \title{Product Vision\\
@@ -10,44 +13,33 @@
 	The why, who and what
 	\end{small}
 }
+% Question: should this be our names or organization name?
 \author{MoodCat.me}
 \maketitle
 
 \section{Why should we build MoodCat?}
-Listening to music is currently a solo activity.
 Various competitors provide a system that can offer users popular songs or songs that are similar to songs the user already listened to.
-These systems don't offer users songs they haven't heard yet and that might fit the user's current need.
-Since these systems provide solely songs that fit only the user and are very limited in varience, a better solution can be achieved.
+These recommendations mostly consist of songs that are popular or users with simmilar preferences listened to.
+This leaves a tremendous chunk of music produced by a lot of artists undiscovered.
 
-Secondly there are some competitors that offer users a room to socialize while experiencing songs selected by other users in the room.
-While this might offer the user unknown songs, the system is user-driven and does not offer the listeners that want to listen on their own.
+Secondly, most music platforms do not offer user interaction.
+Some competitors offer users rooms to socialize while experiencing songs.
+An example is Plug DJ \cite{PlugDJ} where users can create a room and listeners can suggest Youtube-songs\cite{Youtube} for the playlist.
+Such a playlist has to be maintained in order to keep running and therefore does not suit the listeners that want to listen on their own.
+Furthermore, it has to be moderated to prevent unwanted suggestions that might not be interesting for the listeners.
 
-\section{What are the selling points of MoodCat?}
-MoodCat has several selling points that makes it unique in the current music market.
+\bigskip 
 
-\begin{enumerate}
-\item MoodCat is self-maintaining, which makes it possible to handle audience sizes from one to one thousand.
-This makes it possible to use the system no matter how many other users are currently online.
-
-\item MoodCat offers users both to experience solely or communicate with fellow music listeners.
-
-\item MoodCat does not suffer a lot of a cold start.
-The system is able to offer relevant songs using the specified current mood of the user.
-
-\item MoodCat offers unknown/lesser known artists the possibility to promote their songs.
-The system will choose songs that are in the long tail of fewer-played songs in order to keep a high variety of songs.
-
-\item MoodCat can determine mood trends of a long-term user and can adjust the song-selection mechanism accordingly.
-Therefore long-term users are served more suitable songs which increases their overall satisfaction.
-\end{enumerate}
+Users want to discover music and have social interaction.
+MoodCat allows users (and friends!) to unite in rooms, and listen to and discuss music together.
+Hereby we apply a successful feature from the live video/gaming streaming industry (for example TwitchTV \cite{Twitch}) to the music industry.
+Music rooms never fall silent, instead they are continuously filled with relevant music that fits the mood of the listeners in the room.
 
 \section{What is the target audience of MoodCat?}
 Our target audience consists of (but not limiting to) the following persons:
 
 \begin{enumerate}
 \item Everyone who wants to listen to music without the hassle of searching suitable songs for their current mood/preferences.
-
-\item Unknown/lesser known artists that created songs they want to offer the system user to listen to.
 
 \item Everyone who wants to discover and listen to songs they haven't heard yet.
 
@@ -56,15 +48,60 @@ Our target audience consists of (but not limiting to) the following persons:
 \item Everyone who wants to listen at any time on the day, no matter how many users are currently online.
 \end{enumerate}
 
-\section{Which components should MoodCat have?}
-MoodCat should have the following components in order to have a shippable product:
+\section{What are the selling points of MoodCat?}
+MoodCat has several selling points that would make it unique in the current music market.
 
 \begin{enumerate}
-\item MoodCat should have a self-maintainable song-selection system that can offer users suitable songs for their current mood.
+\item MoodCat is self-maintaining, which makes it possible to handle audience sizes from one to one thousand.
+This makes it possible to use the system no matter how many other users are currently online.
 
-\item MoodCat should have a page that offers users the possibility to communicate with fellow users.
+\item MoodCat offers users both to experience solely or communicate with fellow music listeners.
 
-\item Moodcat should offer users the ability to express their current mood in order to influence the song-selection mechanism.
+\item The system already works without this user input as specific interpretation of audio features allow us to find similar songs.
+The system is able to offer relevant songs using the specified current mood of the user.
+
+\item With MoodCat unknown/lesser known artists have equal chances to let their songs be played.
+This is a result of the system choosing songs based on features and is therefore unbiased regarding play counts.
+
+\item MoodCat can determine mood trends of a long-term user and can adjust the room-ordering mechanism accordingly.
+Therefore long-term users are served more suitable rooms which increases their overall satisfaction.
+
+\item MoodCat can suggest users who are repeatedly not satisfied with the songs played in a room, a different and more suitable room.
 \end{enumerate}
+
+\section{Which components should MoodCat have?}
+MoodCat will be developed as three seperate componentents: the frontend, the backend and a special music matching algorithm.
+
+\begin{enumerate}
+\item The frontend will be the visible part for the listener.
+After logging in to our services, the user will be able to select his mood and based on that MoodCat will provide several music listening rooms.
+In these rooms the user can interact with other listeners through the chat while listening to the music.
+
+\item The backend keeps track of which rooms are active and what song is currently played in the room.
+Furthermore, the backend is responsible for transmitting the chat messages between the users in the room.
+
+\item The music matching algorithm is used to compare and match moods of songs and chatrooms.
+It has two roles: list the room suggestions for a user and provide the next song to be played for a room.
+\end{enumerate}
+
+\newpage
+
+\subsection{Frontend}
+
+The MoodCat frontend will be web-based. This allows us to support all modern devices which enables a large target audience. We will develop the frontend using modern techniques as HTML5, CSS3 and AngularJS. Users can login using their Soundcloud account. This allows us to integrate with the Soundcloud platform and prevents having to register for our services first.
+
+\subsection{Backend}
+
+The MoodCat backend will be a RESTful API written in Java using JAX-RS. It will be backed by a relational (PostgreSQL) database. The backend connects the frontend to the music matching algorithm.
+
+\subsection{Music matching algorithm}
+
+
+
+\begin{thebibliography}{10}
+\bibitem{PlugDJ} http://www.plug.dj
+\bibitem{Youtube} http://www.youtube.com
+\bibitem{Twitch} http://www.twitch.tv
+\end{thebibliography}
 
 \end{document}
