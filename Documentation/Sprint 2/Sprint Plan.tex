@@ -16,9 +16,12 @@ Group : Multimedia services 1\\
 \begin{table}[h]
 \begin{tabular}{|p{4.5cm}|p{7cm}|p{4cm}|p{2.6cm}|}
 \textbf{User Story} & \textbf{Task} & \textbf{Task assigned to} & \textbf{Estimated Effort per Task} \\
-As a developer I want to have a database to store data in.  & \begin{enumerate}
-\item Make database entities with hibernate  
-\item Make a PostgreSQL instance on a vps.
+As a developer I want to have a database to store data in.
+
+&
+\begin{enumerate}
+\item Make database entities for Valence-arousal vector. 
+\item Install a PostgreSQL instance on a vps.
 \end{enumerate}
 
 & 
@@ -34,13 +37,13 @@ As a developer I want to have a database to store data in.  & \begin{enumerate}
 \end{enumerate}
 \\
 
-As a developer I want to make an algorithm that takes low-level music features and produces an valence/arousal vector.
+As a developer I want to make an algorithm that takes low-level music features and produces an valence-arousal vector.
 &
 \begin{enumerate}
-\item Use the library to make an interface for the valence/arousal vector.
-\item Make a test dataset to test our algorithm.
-\item Test the interface.
-\item Make the algorithm itself that makes the vector.
+\item Make a predictor-implementation using the recommendation-library for the valence/arousal vector.
+\item Make a test dataset with songs and our personal preferences to test our algorithm.
+\item Test the predictor comparing our preference with the predicted preference.
+\item Tweak the algorithm in order to produce reasonable vector-predictions.
 \end{enumerate}
 
 &
@@ -66,9 +69,9 @@ As a user I want to go to a room and chat whit the people that are there with me
 I want to be able to save the url from a room and come back later.
 &
 \begin{enumerate}
-\item Make the API/backend for the chats.
-\item Make the API/backend for the rooms.
-\item Make static bindings to API for a room.
+\item Make the API on the backend for the chats.
+\item Make the API on the backend for the rooms.
+\item Let the frontend do API calls to the backend to receive room and chat data.
 \end{enumerate}
 
 &
@@ -88,12 +91,12 @@ I want to be able to save the url from a room and come back later.
            
 \\
 
-As a developer I want to documentate our system.
+As a teaching assistant I want to read the documention of the system.
 &
 \begin{enumerate}
-\item Update product vision document
-\item Make the architecture design document
-\item Update the requirements docuement.
+\item Update product vision document with TA and information skills teacher feedback.
+\item Write the architecture design document
+\item Update the requirements document with the system changes of the first 2 sprints.
 \end{enumerate} 
            
 &
