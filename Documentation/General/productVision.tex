@@ -24,7 +24,10 @@ Various competitors provide a system that can offer users popular songs or songs
 These recommendations mostly consist of songs that are popular or users with simmilar preferences listened to.
 This leaves a huge amount of music produced by a lot of artists undiscovered.
 
-Secondly, most music platforms do not offer user interaction.
+Secondly, most music platforms do not offer explicit user interaction.
+The users can not influence the overall system, but only their own suggestion list.
+The suggestion list is built indirectly using user information (what songs did the user listen to, at what timestamp did the user listen to songs, etc...).
+
 Some competitors offer users rooms to socialize while experiencing songs.
 An example is Plug DJ \cite{PlugDJ} where users can create a room and listeners can suggest Youtube-songs\cite{Youtube} for the playlist.
 Such a playlist has to be maintained in order to keep running and therefore does not suit the listeners that want to listen on their own.
@@ -38,38 +41,27 @@ Hereby we apply a successful feature from the live video/gaming streaming indust
 Music rooms never fall silent, instead they are continuously filled with relevant music that fits the mood of the listeners in the room.
 
 \section{What is the target audience of MoodCat?}
-Our target audience consists of (but not limiting to) the following persons:
-
-\begin{enumerate}
-\item Everyone who wants to listen to music without the hassle of searching suitable songs for both their musical preference and current mood.
-
-\item Everyone who wants to discover and listen to songs they have not heard yet.
-
-\item Everyone who wants to listen to and experience songs and share this experience with fellow listeners in the same online room.
-
-\item Everyone who wants to listen at any time on the day, no matter how many users are currently online.
-\end{enumerate}
+Our target audience consists of everyone who wants to listen to new songs based on their current mood.
+More specifically, the users of MoodCat will mainly consist of people who want to discover songs they have not heard yet.
+In the data-mining field this is also known as 'fetching from the long tail' \cite{longtail}.
+By offering new songs, while fitting the user's mood, we can offer a unique user experience.
 
 \section{What are the selling points of MoodCat?}
 MoodCat has several selling points that would make it unique in the current music market.
 
 \begin{enumerate}
-\item MoodCat is self-maintaining, which makes it possible to handle audience sizes from one to one thousand.
-This makes it possible to use the service no matter how many other users are currently online.
+\item The system is able to offer relevant songs using the specified current mood of the user.
 
 \item MoodCat offers users both to experience solely or communicate with fellow music listeners.
 
-\item The system already works without user input as specific interpretation of audio features allow us to find similar songs.
-
-\item The system is able to offer relevant songs using the specified current mood of the user.
+\item The service can be used no matter how many other users are currently online.
+This is achieved by making MoodCat self-maintaining.
 
 \item With MoodCat unknown or lesser known artists have equal chances to let their songs be played.
 This is a result of the system choosing songs based on features and is therefore unbiased regarding play counts.
 
-\item MoodCat can determine mood trends of a long-term user and can adjust the room-ordering mechanism accordingly.
-Therefore long-term users are served more suitable rooms which increases their overall satisfaction.
+\item MoodCat can determine mood trends of a user and can adjust the room-ordering and song-selection mechanisms accordingly.
 
-\item MoodCat can suggest users who are repeatedly not satisfied with the songs played in a room, a different and more suitable room.
 \end{enumerate}
 
 \section{Which components should MoodCat have?}
@@ -77,8 +69,9 @@ MoodCat will be developed as three separate componentents: the frontend, the bac
 
 \begin{enumerate}
 \item The frontend will be the visible part for the listener.
-After logging in to our services, the user will be able to select his mood and based on that MoodCat will provide several music listening rooms.
-In these rooms the user can interact with other listeners through the chat while listening to the music.
+The user will be able to select his mood and based on that MoodCat will provide several music listening rooms.
+The user can select a room and immediately start listening to the currently played song.
+In these rooms, after logging in, the user can interact with other listeners through the chat while listening to the music.
 
 \item The backend keeps track of which rooms are active and what song is currently played in the room.
 Furthermore, the backend is responsible for transmitting the chat messages between the users in the room.
@@ -116,13 +109,13 @@ We discovered that moods and emotions can be mapped to a valence/arousal space (
 \begin{figure}[h]
 \center
 \includegraphics[scale=0.75]{avgraph.jpg}
-\caption{The valance/arousal graph \cite{Book}}
+\caption{The valence/arousal graph \cite{Book}}
 \endcenter
 \label{fig:avgraph}
 
 \end{figure}
 
-Arousal and valence are physiological terms.
+Arousal and valence are psychological terms.
 Arousal means how calm or excited you are.
 Valence is the amount of attraction you have towards a certain event.
 
@@ -132,7 +125,8 @@ For arousal we can use pitch, timbre, speed and loudness \cite{PresentationMER}\
 
 \newpage
 
-The data of EEMCS does not explicitly provide the above features. However, we can extract some of them from the low-level features the data does provide.
+The data provided by the Multimedia Computing group from EEMCS does not explicitly provide the above features.
+However, we can extract some of them from the low-level features the data does provide.
 
 The low-level features we can use for valence:
 \begin{enumerate}
@@ -145,10 +139,13 @@ The low-level features we can use for arousal:
 \begin{enumerate}
 \item Beats-per-minute (BPM) gives us the tempo of a song.
 \item Loudness can be directly retrieved from the loudness feature.
-\item Pitch can be direved from the tuning frequency, which is standardized at \SI{440}{\hertz} but may vary depending on music genre, era and geography.
+\item Pitch can be derived from the tuning frequency, which is standardized at \SI{440}{\hertz} but may vary depending on music genre, era and geography.
 \end{enumerate}
 
 The timbre of a song is a separate research field and would be too difficult to integrate into our system.
+
+Using the above features, we will tweak a song-classifier algorithm that can determine the mood of a song given a set of features.
+Tweaking the algorithm will be done by personal preference of the team members and later on with the input of the system users.
 
 %
 % BIBLIOGRAPHY
