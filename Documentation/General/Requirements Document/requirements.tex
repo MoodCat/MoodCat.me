@@ -1,0 +1,126 @@
+\chapter{Functional requirements}
+For the product MoodCat, the requirements regarding functionality and service are grouped under the \emph{Functional requirements}.
+Within these functional requirements, four categories can be identified using the \emph{MoSCoW} model \footnote{\url{http://en.wikipedia.org/wiki/MoSCoW_method}} for prioritizing requirements:
+
+\section{Must haves}
+\begin{itemize}
+\item The user shall interact with the product via a web interface.
+
+\item The web interface shall show a screen to log in to the application.
+
+\item The login mechanism shall be managed by SoundCloud OAuth keys ("Log in with SoundCloud").
+
+\item The login mechanism shall show an error page when the user does not authorize MoodCat to have access to their SoundCloud data.
+
+\item The web interface shall show a first-use tutorial upon logging in succesfully for the first time.
+
+\item The web interface shall show the user a page where they can select their current mood.
+
+\item The web interface shall show the following moods:
+		\begin{itemize}
+		\item Nervous
+		\item Exiting
+		\item Happy
+		\item Pleasing
+		\item Relaxing
+		\item Peaceful
+		\item Calm
+		\item Sleepy
+		\item Bored
+		\item Sad
+		\end{itemize}
+	  These moods are defined by the Arousal/Valence model\footnote{Y. Chang and H.H. Chen. Music Emotion Recognition. Boca raton, State:
+CRC Press, 2011.}.
+
+\item The system shall serve the user a list of rooms, ordered by how close they match the given mood.
+
+\item The web interface shall notify the user if they made an illogical combination of moods, warning them results may vary.
+
+\item The web interface shall present the user with a room when it is chosen.
+
+\item The web interface shall start playing the current song on the current timestamp when a user joins the room.
+
+\item A room shall contain a chat, connecting people with the same mood together.
+
+\item A room shall contain a now playing slider.
+
+\item The web interface shall give the user the option to mute the playing music.
+
+\item A room has a button to upvote the current song, indicating the song is a good fit to the room.
+
+\item A room has a button to downvote the current song, indicating the song is a bad fit to the room. This will also vote to skip.
+
+\item A room has a button to "vote to skip". This does not affect the fit of the song to the room, but is a tool to skip songs.
+
+\item A song shall be skipped in one of the following situations:
+	\begin{itemize}
+	\item The song received $\frac{\$number\_of\_users\_in\_room}{3}$ votes to skip.
+	\item The song received at least 10 votes, and the ratio upvote:downvote is 1:2 or less.
+	\item A moderator skips the song (to prevent escalations)
+	\end{itemize}
+	
+\item The system shall stream the music from the SoundCloud platform using the SoundCloud API\footnote{\url{https://developers.soundcloud.com/docs/api/guide}}
+
+\item If SoundCloud provides MoodCat with a purchase\_url \footnote{\url{https://developers.soundcloud.com/docs/api/reference\#tracks}}, This will be made available to the user.
+
+\item The system shall periodically suggest the user to hop to another room to encourage more interaction and we can direct the user to a more preferred mood.
+
+\item The system shall use a multi-layer perceptron system to predict the mood of a song.
+
+\item The multi-layer perceptron shall be trained with metadata provided by EEMCS
+
+\item The system will use a recommender system to determine the next song to be played in each room.
+
+\item The upvotes and downvotes for a song change the weights of the multi-layer perceptron.
+
+\item The user shall be rewarded for up- and downvoting with "treats". These treats are achievement points.
+
+\item With enough achievement points the user can receive predefined perks, such as the ability to add a number to the room.
+
+\item The system shall retrieve more metadata about a song from AcousticBrainz\footnote{\url{http://acousticbrainz.org/}}.
+
+\item If metadata is not present in the AcousticBrainz database the system shall run an analysis itself using the AcousticBrainz software.
+
+
+\end{itemize}
+\section{Should haves}
+\begin{itemize}
+\item placeholder
+\end{itemize}
+
+\section{Could haves}
+\begin{itemize}
+\item The system shall provide a search engine that aids the user in finding a song to add.
+\end{itemize}
+
+\section{Would/Won't haves}
+\begin{itemize}
+\item placeholder
+\end{itemize}
+
+\chapter{Non-functional requirements}
+\begin{itemize}
+
+\item For the project, the Scrum methodology shall be applied.
+
+\item Code shall be versioned using Git
+
+\item Git shall be used with the PR methodology: Every new feature will be developed in a branch, once completed it will be turned into a pull request. This will be reviewed and improved, and if it's accepted the branch gets merged into master.
+
+\item Frontend and Backend shall communicate in a RESTful way, using an API.
+
+\item The product shall consist of a seperate frontend and backend repo, ensuring proper RESTful implementation is used.
+
+\item The backend will be implemented in Java. The frontend web app will be implemented in AngularJS. 
+
+\item The project shall use Continuous Integration to ensure the entire codebase is tested for every change. In this project, Travic CI will be the tool of choice.
+
+\item Code readability shall be safeguarded with the use of Checkstyle and FindBugs. Code formatting will also be agreed upon to prevent auto-formatting issues in git diffs.
+
+\item Core systems shall be unit tested with a coverage of at least 80%. In addition, integration tests can be implemented.
+
+\item Issues shall be tracked using waffle.io\footnote{\url{http://www.waffle.io}}. This ensures a Scrum style tracking of issues, while still having the overview on github.
+
+\item Every package, class and method shall be documented using JavaDoc. Angular controllers must be documented using NgDoc. 
+
+\end{itemize}
