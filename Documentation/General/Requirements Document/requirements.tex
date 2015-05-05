@@ -34,10 +34,17 @@ CRC Press, 2011.}.
 
 \item The system shall serve the user a list of rooms, ordered by how close they match the given mood.
 
-\item The web interface shall notify the user if they made an illogical combination of moods, warning them results may vary.
-
 \item The web interface shall present the user with a room when it is chosen.
+	
+\item The system shall stream the music from the SoundCloud platform using the SoundCloud API\footnote{\url{https://developers.soundcloud.com/docs/api/guide}}
 
+\item The system shall use a multi-layer perceptron system to predict the mood of a song.
+
+\item The system will use a recommender system to determine the next song to be played in each room.
+
+\end{itemize}
+\section{Should haves}
+\begin{itemize}
 \item The web interface shall start playing the current song on the current timestamp when a user joins the room.
 
 \item A room shall contain a chat, connecting people with the same mood together.
@@ -45,6 +52,8 @@ CRC Press, 2011.}.
 \item A room shall contain a now playing slider.
 
 \item The web interface shall give the user the option to mute the playing music.
+
+\item The web interface shall notify the user if they made an illogical combination of moods, warning them results may vary.
 
 \item A room has a button to upvote the current song, indicating the song is a good fit to the room.
 
@@ -59,38 +68,31 @@ CRC Press, 2011.}.
 	\item A moderator skips the song (to prevent escalations)
 	\end{itemize}
 	
-\item The system shall stream the music from the SoundCloud platform using the SoundCloud API\footnote{\url{https://developers.soundcloud.com/docs/api/guide}}
-
-\item If SoundCloud provides MoodCat with a purchase\_url \footnote{\url{https://developers.soundcloud.com/docs/api/reference\#tracks}}, This will be made available to the user.
-
 \item The system shall periodically suggest the user to hop to another room to encourage more interaction and we can direct the user to a more preferred mood.
 
-\item The system shall use a multi-layer perceptron system to predict the mood of a song.
-
 \item The multi-layer perceptron shall be trained with metadata provided by EEMCS
-
-\item The system will use a recommender system to determine the next song to be played in each room.
 
 \item The upvotes and downvotes for a song change the weights of the multi-layer perceptron.
 
 \item The user shall be rewarded for up- and downvoting with "treats". These treats are achievement points.
 
-\item With enough achievement points the user can receive predefined perks, such as the ability to add a number to the room.
-
 \item The system shall retrieve more metadata about a song from AcousticBrainz\footnote{\url{http://acousticbrainz.org/}}.
 
 \item If metadata is not present in the AcousticBrainz database the system shall run an analysis itself using the AcousticBrainz software.
 
-
-\end{itemize}
-\section{Should haves}
-\begin{itemize}
-\item placeholder
 \end{itemize}
 
 \section{Could haves}
 \begin{itemize}
 \item The system shall provide a search engine that aids the user in finding a song to add.
+
+\item The web interface shall notify the user if they made an illogical combination of moods, warning them results may vary.
+
+\item If SoundCloud provides MoodCat with a purchase\_url \footnote{\url{https://developers.soundcloud.com/docs/api/reference\#tracks}}, This will be made available to the user.
+
+\item With enough achievement points the user can receive predefined perks, such as the ability to add a number to the room.
+
+
 \end{itemize}
 
 \section{Would/Won't haves}
