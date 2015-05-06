@@ -1,0 +1,42 @@
+\documentclass{tudelft-report}
+\usepackage[T1]{fontenc}
+
+
+\begin{document}
+
+%% Use Roman numerals for the page numbers of the title pages and table of
+%% contents.
+\frontmatter
+
+\title[For MoodCat]{Emergent Architecture Design}
+\author{\small Eva Anker (eanker 4311426)\\
+		Gijs Weterings (gweterings 4272587)\\
+		Jaap Heijligers (jheijligers 4288130)\\
+		Jan-Willem Gmelig Meyling (jgmeligmyling 4305167)\\
+		Tim van der Lippe (tvanderlippe 4289439)}
+\affiliation{Technische Universiteit Delft}
+\coverimage{cover.jpg}
+\makecover
+
+%% Include an optional title page.
+\input{title}
+
+\tableofcontents
+
+%\input{preface}
+
+
+%% Use Arabic numerals for the page numbers of the chapters.
+\mainmatter
+\input{preface}
+\input{emergentArchitectureDesign}
+
+%% Use letters for the chapter numbers of the appendices.
+\appendix
+
+%\input{appendix-a}
+
+\bibliography{report}
+
+\end{document}
+
