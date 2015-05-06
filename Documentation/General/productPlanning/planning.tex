@@ -94,43 +94,6 @@ Finish final report and prepare presentation.
 
 \section{User stories of features}
 
-As a user,\\
-When I start the app,\\
-Then I should see a mood-selection page.
-
-As a user,\\
-When I select a mood,\\
-Then I should see a list of rooms.
-
-As a user,\\
-When I select a room,\\
-Then the current song should be played.
-
-As a user,\\
-When I select a room,\\
-Then I should see a chat box.
-
-As a user,\\
-When I type in the chat message input field,\\
-And I click on 'Send message',\\
-Then the message should be send to the backend.
-
-As a user,\\
-When a user in my current room sends a message to the backend,\\
-Then I should see that message in the chat box.
-
-As a user,\\
-When I click on the 'thumbs up' or 'thumbs down' buttons,\\
-Then the system should alter according to the feedback to enhance the song-selection algorithm.
-
-As a user,\\
-When I click on the 'mute' button,\\
-Then the music should be muted.
-
-As a user,\\
-When I join a room,\\
-Then I should see the latest messages sent in this room.
-
 \section{User stories of defects (if applicable)}
 As of the time of writing, no defects have been discovered.
 
@@ -143,6 +106,13 @@ As of the time of writing, no technical improvements were made.
 
 
 \chapter{Definition of Done}
+We need to set a definition of done.
+This entails that for every feature, sprint and the end product, we will define what we consider "done".\\
 
+A feature is done when it is unit tested to such an extend that our set coverage is reached. This implies the feature works as defined. Code written for the feature must also be documented and follow our checkstyle and markup rules. Finally, the feature must be reviewed by at least one team member that was not directly involved in creating the code and tests. If all these prerequisites are met, the Pull-Request can be merged.\\
+
+A sprint is considered done when the application is in a working, deliverable state. This entails that all features in the codebase are done (as described above). The system also has to be manually tested for the main interaction with the system. Lastly, integration tests are created and ran succesfully.\\
+
+The final product is considered done if it passes a few criteria. First of all, the system must be unit and integration tested, and it must be manually inspected for all common user interactions. All must-have requirements must be implemented. If a should-have requirement is not implemented, this has to be agreed upon by all team members with a valid reason, and the product should still be usable without the feature. Code is consistent, validated by the SIG test and documented.
 
 \chapter{Glossary}
