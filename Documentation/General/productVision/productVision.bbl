@@ -1,0 +1,61 @@
+\begin{thebibliography}{10}
+
+\bibitem{AngularJS}
+{AngularJS}.
+\newblock \url{http://www.angularjs.org}.
+\newblock Accessed: 2015-04-28.
+
+\bibitem{CSS}
+{CSS}.
+\newblock \url{http://www.w3.org/Style/CSS/}.
+\newblock Accessed: 2015-04-28.
+
+\bibitem{HTML}
+{HTML}.
+\newblock \url{http://www.w3.org/TR/html5/}.
+\newblock Accessed: 2015-04-28.
+
+\bibitem{PresentationMER}
+{Music Emotion Recognition} presentation.
+\newblock \url{http://www2.ensc.sfu.ca/~ljilja/cnl/guests/Music.pdf}.
+\newblock Accessed: 2015-04-28.
+
+\bibitem{PlugDJ}
+{plug.dj} join the party.
+\newblock \url{https://plug.dj}.
+\newblock Accessed: 2015-04-28.
+
+\bibitem{Twitch}
+{Twitch}.
+\newblock \url{http://twitch.tv}.
+\newblock Accessed: 2015-04-28.
+
+\bibitem{Youtube}
+{YouTube}.
+\newblock \url{https://youtube.com}.
+\newblock Accessed: 2015-04-28.
+
+\bibitem{Book}
+Y.~Chang and H.H. Chen.
+\newblock {\em Music Emotion Recognition}.
+\newblock Boca raton, State: CRC Press, 2011.
+
+\bibitem{PaperME}
+E.~Coutinho and A.~Cangeloosi.
+\newblock Musical emotions: Predicting second-by-second subjective feelings of
+  emotion from low-level psychoacoustic features and physiological
+  measurements, 2011.
+
+\bibitem{rest}
+Roy~Thomas Fielding.
+\newblock {\em {REST:} Architectural Styles and the Design of Network-based
+  Software Architectures}.
+\newblock Doctoral dissertation, University of California, Irvine, 2000.
+
+\bibitem{longtail}
+Òscar Celma.
+\newblock {\em Music Recommendation and Discovery: The Long Tail, Long Fail,
+  and Long Play in the Digital Music Space}.
+\newblock Springer Science \& Business Media, 2010.
+
+\end{thebibliography}
