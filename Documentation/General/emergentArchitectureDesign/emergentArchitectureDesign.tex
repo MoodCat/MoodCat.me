@@ -1,6 +1,6 @@
 \chapter{Introduction}
 \setheader{Introduction}
-This document provides a sketch of the system that is going to be built during the context project multimedia services. The architecture of the system is explained in the form of high level components of the system. These components are split in to sub components and sub-systems.
+This document provides a sketch of the system that is going to be built during the context project multimedia services. The architecture of the syste is defined by the system's high level components. These components are split in to sub components and sub-systems.
 
 \section{Design goals}
 The following design goals will be preserved throughout the project:
@@ -40,7 +40,8 @@ This should enable code reuse and extensibility, and improve the testability of 
 \textbf{Usability}
 \\
 Users should be able to use Moodcat intuitively.
-% Insert more
+All features of MoodCat should work for modern browsers.
+Moodcat should work properly with accessibility tools like screenreaders.
 
 \end{itemize}
 
@@ -137,7 +138,7 @@ Moodcat has to handle both song data and chatroom data.
 
 \par
 For the song we store the basic properties, like artist, song title, genre and duration.
-Furthermore each song has its own valence and arousal value, which is computed and corrected by the music matching algorithm.
+Furthermore each song has its own \gls{valence} and \gls{arousal} value, which is computed and corrected by the music matching algorithm.
 The algorithm uses some of the audio features of the track for the computation of the valence and arousal values, these features are stored with the song.
 
 \par
