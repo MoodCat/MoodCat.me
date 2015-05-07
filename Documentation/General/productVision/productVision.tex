@@ -1,25 +1,4 @@
-\documentclass[10pt,a4paper]{article}
-\usepackage[utf8]{inputenc}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage{cite}
-\usepackage{hyperref}
-\usepackage{graphicx}
-\usepackage{siunitx}
-
-\begin{document}
-
-\title{Product Vision\\
-	\begin{small}
-	The why, who and what
-	\end{small}
-}
-% Question: should this be our names or organization name?
-\author{MoodCat.me}
-\maketitle
-
-\section{Why should we build MoodCat?}
+\chapter{Why should we build MoodCat?}
 Various competitors provide a system that can offer users popular songs or songs that are similar to songs the user already listened to.
 These recommendations mostly consist of songs that are popular or users with simmilar preferences listened to.
 This leaves a huge amount of music produced by a lot of artists undiscovered.
@@ -40,13 +19,13 @@ MoodCat allows users (and friends!) to unite in rooms, and listen to and discuss
 Hereby we apply a successful feature from the live video/gaming streaming industry (for example TwitchTV \cite{Twitch}) to the music industry.
 Music rooms never fall silent, instead they are continuously filled with relevant music that fits the mood of the listeners in the room.
 
-\section{What is the target audience of MoodCat?}
+\chapter{What is the target audience of MoodCat?}
 Our target audience consists of everyone who wants to listen to new songs based on their current mood.
 More specifically, the users of MoodCat will mainly consist of people who want to discover songs they have not heard yet.
 In the data-mining field this is also known as 'fetching from the long tail' \cite{longtail}.
 By offering new songs, while fitting the user's mood, we can offer a unique user experience.
 
-\section{What are the selling points of MoodCat?}
+\chapter{What are the selling points of MoodCat?}
 MoodCat has several selling points that would make it unique in the current music market.
 
 \begin{enumerate}
@@ -64,7 +43,7 @@ This is a result of the system choosing songs based on features and is therefore
 
 \end{enumerate}
 
-\section{Which components should MoodCat have?}
+\chapter{Which components should MoodCat have?}
 MoodCat will be developed as three separate componentents: the frontend, the backend and a special music matching algorithm.
 
 \begin{enumerate}
@@ -146,11 +125,3 @@ The timbre of a song is a separate research field and would be too difficult to 
 
 Using the above features, we will tweak a song-classifier algorithm that can determine the mood of a song given a set of features.
 Tweaking the algorithm will be done by personal preference of the team members and later on with the input of the system users.
-
-%
-% BIBLIOGRAPHY
-%
-\bibliography{productVision}{}
-\bibliographystyle{plain}
-
-\end{document}

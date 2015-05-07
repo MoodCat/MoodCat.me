@@ -1,0 +1,10 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}Why should we build MoodCat?}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}What is the target audience of MoodCat?}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}What are the selling points of MoodCat?}{5}{chapter.3}
+\contentsline {chapter}{\numberline {4}Which components should MoodCat have?}{7}{chapter.4}
+\contentsline {subsection}{\numberline {4.0.1}Frontend}{8}{subsection.4.0.1}
+\contentsline {subsection}{\numberline {4.0.2}Backend}{8}{subsection.4.0.2}
+\contentsline {subsection}{\numberline {4.0.3}Music matching algorithm}{8}{subsection.4.0.3}
+\contentsline {chapter}{Bibliography}{11}{appendix*.3}
+\contentsfinish 
