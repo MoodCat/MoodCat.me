@@ -5,7 +5,7 @@ This leaves a huge amount of music produced by a lot of artists undiscovered.
 
 Secondly, most music platforms do not offer explicit user interaction.
 The users can not influence the overall system, but only their own suggestion list.
-The suggestion list is built indirectly using user information (what songs did the user listen to, at what timestamp did the user listen to songs, etc...).
+The suggestion list is built indirectly using user information (what songs did the user listen to, at what timestamp did the user listen to songs).
 
 Some competitors offer users rooms to socialize while experiencing songs.
 An example is Plug DJ \cite{PlugDJ} where users can create a room and listeners can suggest Youtube-songs\cite{Youtube} for the playlist.
@@ -81,9 +81,7 @@ This means that Moodcat will improve over time.
 Default values will be determined by examining the audio features provided by our data set.
 Then, through a system of user votes, the system will learn and improve over time.
 
-We discovered that moods and emotions can be mapped to a valence/arousal space (see figure \ref{fig:avgraph}).
-% This graph has been of interest for some scientifical papers \cite{Kosina} \cite{McVicar}.
-%     The references are unrelated. Also this sentence seems a bit unnecessary in the story
+We discovered that moods and emotions can be mapped to a valence/arousal space\cite{Yang:2006:MEC:1180639.1180665} (see figure \ref{fig:avgraph}).
 
 \begin{figure}[h]
 \center
@@ -94,13 +92,13 @@ We discovered that moods and emotions can be mapped to a valence/arousal space (
 
 \end{figure}
 
-Arousal and valence are psychological terms.
+Arousal and valence are psychological terms\cite{Thayer}.
 Arousal means how calm or excited you are.
 Valence is the amount of attraction you have towards a certain event.
 
 In order to use arousal and valence, we have to express them in terms of music features.
-For valence we can use harmony, mode and tonality.
-For arousal we can use pitch, timbre, speed and loudness \cite{PresentationMER}\cite{PaperME}.
+For valence we can use harmony, mode and tonality\cite{DianaDeutsch}.
+For arousal we can use pitch, timbre \cite{Liu03automaticmood}, speed and loudness \cite{PresentationMER}\cite{PaperME}.
 
 \newpage
 
