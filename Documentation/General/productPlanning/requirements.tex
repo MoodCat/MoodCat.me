@@ -30,14 +30,12 @@ Within these functional requirements, four categories can be identified using th
 		\item Bored
 		\item Sad
 		\end{itemize}
-	  These moods are defined by the Arousal/Valence model\footnote{Y. Chang and H.H. Chen. Music Emotion Recognition. Boca raton, State:
-CRC Press, 2011.}.
 
-\item The system shall serve the user a list of rooms, ordered by how close they match the given mood.
+\item The system shall serve the user a list of rooms, ordered by how close they match the mood of the user.
 
 \item The web interface shall present the user with a room when it is chosen.
 	
-\item The system shall stream the music from the SoundCloud platform using the SoundCloud API\footnote{\url{https://developers.soundcloud.com/docs/api/guide}}
+\item The platform should be able to stream music to the client
 
 \item The system shall use a multi-layer perceptron system to predict the mood of a song.
 
@@ -46,40 +44,33 @@ CRC Press, 2011.}.
 \end{itemize}
 \subsubsection{Should haves}
 \begin{itemize}
-\item The web interface shall start playing the current song on the current timestamp when a user joins the room.
+\item Users in the same room listen to the same music at the same time point.
 
 \item A room shall contain a chat, connecting people with the same mood together.
 
 \item A room shall contain a now playing slider.
 
-\item The web interface shall give the user the option to mute the playing music.
+\item The web interface shall give the user the option to mute or disconnect the current stream.
 
 \item The web interface shall notify the user if they made an illogical combination of moods, warning them results may vary.
 
 \item A room has a button to upvote the current song, indicating the song is a good fit to the room.
 
-\item A room has a button to downvote the current song, indicating the song is a bad fit to the room. This will also vote to skip.
-
-\item A room has a button to "vote to skip". This does not affect the fit of the song to the room, but is a tool to skip songs.
+\item A room has a button to downvote the current song, indicating the song is a bad fit to the room. This will also vote to skip the song.
 
 \item A song shall be skipped in one of the following situations:
 	\begin{itemize}
 	\item The song received $\frac{\$number\_of\_users\_in\_room}{3}$ votes to skip.
 	\item The song received at least 10 votes, and the ratio upvote:downvote is 1:2 or less.
-	\item A moderator skips the song (to prevent escalations)
 	\end{itemize}
-	
-\item The system shall periodically suggest the user to hop to another room to encourage more interaction and we can direct the user to a more preferred mood.
 
-\item The multi-layer perceptron shall be trained with metadata provided by EEMCS
+\item The multi-layer perceptron will be enabled by generating initial values from the metadata in our dataset.
 
 \item The upvotes and downvotes for a song change the weights of the multi-layer perceptron.
 
 \item The user shall be rewarded for up- and downvoting with "treats". These treats are achievement points.
 
 \item The system shall retrieve more metadata about a song from AcousticBrainz\footnote{\url{http://acousticbrainz.org/}}.
-
-\item If metadata is not present in the AcousticBrainz database the system shall run an analysis itself using the AcousticBrainz software.
 
 \end{itemize}
 
@@ -93,26 +84,26 @@ CRC Press, 2011.}.
 
 \item With enough achievement points the user can receive predefined perks, such as the ability to add a number to the room.
 
+\item The system shall periodically suggest the user to hop to another room to encourage more interaction and we can direct the user to a more preferred mood.
+
+\item If metadata is not present in the AcousticBrainz database the system shall run an analysis itself using the AcousticBrainz software.
+
+\item Visualisation for the current mood
+
+
+\item Show artist trivia information for the now playing song.
 
 \end{itemize}
 
 \subsubsection{Would/Won't haves}
 \begin{itemize}
-\item The service won't have any other front end than the web interface.
-
-\item The web interface won't have music visualization.
-
-\item The service won't stream the music files itself, instead the SoundCloud API is used.
+\item We will focus on the development of a web interface, and will not build native clients for any type of device.
 
 \item The service won't have social network integration.
 
 \item The chat won't have a chatbot.
 
 \item The service won't have a list of listeners.
-
-\item The service won't have a Google scraper to display trivia.
-
-\item The users won't have the ability to comment on songs.
 
 \item The service won't have trending topics or moods.
 
@@ -125,13 +116,13 @@ CRC Press, 2011.}.
 
 \item Code shall be versioned using Git
 
-\item Git shall be used with the PR methodology: Every new feature will be developed in a branch, once completed it will be turned into a pull request. This will be reviewed and improved, and if it's accepted the branch gets merged into master.
+\item Git shall be used with the PR methodology: Every new feature will be developed in a branch, once completed it will be turned into a pull request. This will be reviewed and improved, and if it is accepted the branch gets merged into master.
 
 \item Frontend and Backend shall communicate in a RESTful way, using an API.
 
 \item The product shall consist of a seperate frontend and backend repo, ensuring proper RESTful implementation is used.
 
-\item The backend will be implemented in Java. The frontend web app will be implemented in AngularJS. 
+\item The backend will be implemented in Java. The frontend web app will be built in HTML, CSS and JavaScript, using the AngularJS framework. 
 
 \item The project shall use Continuous Integration to ensure the entire codebase is tested for every change. In this project, Travic CI will be the tool of choice.
 
