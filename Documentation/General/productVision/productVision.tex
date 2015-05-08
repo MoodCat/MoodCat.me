@@ -8,11 +8,10 @@ The type of music people want to listen to is based on their mood, there's no do
 Our goal is to use this relationship between mood and music,
 combine it with a music recommendation system and make a music service
 that will influence and be influenced by the listeners over time.
-This is our main focus point.
 
-Besides this we're going to add a social component to listening mood based music.
-It doesn't matter which genre a song belongs to or which mood a listener is in;
-Listening music together is more joyful, since you can share experiences.
+Besides, we will add a social component to listening mood based music.
+It does not matter which genre a song belongs to or which mood a listener is in; 
+listening music together is more joyful, since you can share experiences.
 We want to make a music service that connects people that are in the same mood and make them enjoy the songs together.
 Users of our music service will be able to join a room based on a chosen mood.
 This room will also have a chat to be able to interact with other people who are in the same mood.
@@ -25,6 +24,7 @@ These crucial components will satisfy the previously defined goal and will there
 
 \section{Timeframe}
 This product will be developed over a span of 11 weeks, with no budget.
+% That is, besides the daily pie budget.
 Every week will consist of a sprint which will result in a working product to be shown at the demonstration on fridays.
 
 \chapter{Why should we build MoodCat?}
@@ -32,9 +32,9 @@ Various competitors provide a system that can offer users popular songs or songs
 These recommendations mostly consist of songs that are popular or users with simmilar preferences listened to.
 This leaves a huge amount of music produced by a lot of artists undiscovered.
 
-Secondly, most music platforms do not offer explicit user interaction.
-The users can not influence the overall system, but only their own suggestion list.
-The suggestion list is built indirectly using user information (what songs did the user listen to, at what timestamp did the user listen to songs).
+Secondly, most music platforms do not offer user interaction in the form either chat or messaging systems.
+By voting songs up or down, users influcence the system and mostly their personal recommendations from the system: the suggestion list is built indirectly using user information.
+These suggestions are derived from song history and voting behaviour.
 
 Some competitors offer users rooms to socialize while experiencing songs.
 An example is Plug DJ \cite{PlugDJ} where users can create a room and listeners can suggest Youtube-songs\cite{Youtube} for the playlist.
@@ -51,8 +51,9 @@ Music rooms never fall silent, instead they are continuously filled with relevan
 \chapter{What is the target audience of MoodCat?}
 Our target audience consists of everyone who wants to listen to new songs based on their current mood.
 More specifically, the users of MoodCat will mainly consist of people who want to discover songs they have not heard yet.
-In the data-mining field this is also known as 'fetching from the long tail' \cite{longtail}.
-By offering new songs, while fitting the user's mood, we can offer a unique user experience.
+In the data-mining field this is also known as \textit{fetching from the long tail}\cite{longtail}.
+By offering songs that match the users mood, the user will be satisfied with the music suggestions while also having the possibility of discovering new and unknown - yet interesting - music.
+With this we can offer a unique user experience.
 
 \chapter{What are the selling points of MoodCat?}
 MoodCat has several selling points that would make it unique in the current music market.
@@ -110,7 +111,7 @@ This means that Moodcat will improve over time.
 Default values will be determined by examining the audio features provided by our data set.
 Then, through a system of user votes, the system will learn and improve over time.
 
-We discovered that moods and emotions can be mapped to a valence/arousal space\cite{Yang:2006:MEC:1180639.1180665} (see figure \ref{fig:avgraph}).
+We discovered that moods and emotions can be mapped to a valence/arousal plane\cite{Yang:2006:MEC:1180639.1180665} (see figure \ref{fig:avgraph}).
 
 \begin{figure}[h]
 \center
