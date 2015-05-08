@@ -1,0 +1,218 @@
+\documentclass[11pt,a4paper,landscape]{article}
+\usepackage{titling,graphicx,palatino,amsmath,enumerate,booktabs,listings,color}
+\usepackage[none]{hyphenat}
+\usepackage[parfill]{parskip}
+\usepackage{pgfplots}
+\usepackage{longtable}
+\usepackage[top=2 cm, bottom= 2 cm, left=1 cm, right=1 cm]{geometry}
+\usepackage{enumitem}
+\begin{document}
+
+
+\section*{Sprint reflection Plan 2}
+Context : Multimedia services\\
+Group : Multimedia services 1\\
+
+
+
+\begin{table}[h]
+\begin{tabular}{|p{3cm}|p{5.0cm}|p{3.0cm}|p{2.2cm}|p{2.2cm}|p{2.0cm}|p{5cm}}
+\textbf{User Story} & \textbf{Task} & \textbf{Task assigned to} & \textbf{Estimated Effort per Task (Hours)} & \textbf{Actual Effort per Task (Hours)} & \textbf{Done} & \textbf{Notes}\\
+As a developer I want to have a database to store data in.
+
+&
+\begin{enumerate}
+\item Make database entities for Valence-arousal vector. 
+\item Install a PostgreSQL instance on a vps.
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Jan-Willem Gmelig Meyling
+\item Jaap Heijligers
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 2 hours
+\item 2 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item 1 hour
+\item 2 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item Yes
+\item Yes
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item 
+\item Had some access problems from the outside.
+\end{enumerate}
+\\
+
+As a developer I want to make an algorithm that takes low-level music features and produces an valence-arousal vector.
+&
+\begin{enumerate}
+\item Make a predictor implementation using the recommendation-library for the valence/arousal vector.
+\item Make a test dataset with songs and our personal preferences to test our algorithm.
+\item Test the predictor comparing our preference with the predicted preference.
+\item Tweak the algorithm in order to produce reasonable vector-predictions.
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item Tim van der Lippe
+\item Eva Anker
+\item Tim van der Lippe
+\item Eva Anker
+\end{enumerate}
+
+&
+
+\begin{enumerate}
+\item 2 hours
+\item 6 hours
+\item 2 hours
+\item 10 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item 4 hours
+\item 4 hours
+\item 2 hours
+\item 3 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item Yes
+\item Yes
+\item Yes
+\item No
+\end{enumerate}
+&
+\begin{enumerate}
+\item Took some extra time due to fitting the library to our needs.
+\item 
+\item Jan-Willem took over this issue.
+\item Not finished due to an unforseen amount of documentation work. Has been transferred to next sprint.
+\end{enumerate}
+
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\begin{tabular}{|p{3cm}|p{5.0cm}|p{3.0cm}|p{2.2cm}|p{2.2cm}|p{2.0cm}|p{5cm}}
+As a user I want to go to a room and chat whit the people that are there with me.
+I want to be able to save the url from a room and come back later.
+&
+\begin{enumerate}
+\item Make the API on the backend for the chats.
+\item Make the API on the backend for the rooms.
+\item Let the frontend do API calls to the backend to receive room and chat data.
+\end{enumerate}
+
+&
+
+\begin{enumerate}
+\item Jaap Heijligers
+\item Tim van der Lippe
+\item Gijs Weterings
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item 6 hours
+\item 6 hours
+\item 8 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item 3 hours
+\item 6 hours
+\item 9 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item Yes
+\item Yes
+\item Yes
+\end{enumerate}
+&
+\begin{enumerate}
+\item Swapped this issue and the next. Tim made this one. We found the communication between the frontend and backend tasks a bit troublesome, as we did not agree on a specific standard until later in the sprint.
+\item Swapped this issue and the next. Jaap made this one. We found the communication between the frontend and backend tasks a bit troublesome, as we did not agree on a specific standard until later in the sprint.
+\item Jan-Willem took over this issue.
+\item Took slightly longer due to miscommunication with Tim and Jaap. We agreed to improve this in the future by sitting down together and agreeing on the interface first.
+\end{enumerate}
+
+\end{tabular}
+\end{table}
+\begin{table}[h]
+\begin{tabular}{|p{3cm}|p{5.0cm}|p{3.0cm}|p{2.2cm}|p{2.2cm}|p{2.0cm}|p{5cm}}
+
+As a teaching assistant I want to read the documention of the system.
+&
+\begin{enumerate}
+\item Update product vision document with TA and information skills teacher feedback.
+\item Write the architecture design document
+\item Update the requirements document with the system changes of the first 2 sprints.
+\end{enumerate} 
+           
+&
+\begin{enumerate}
+\item Tim van der Lippe
+\item Jan-Willem Gmelig Meyling
+\item Gijs Weterings
+\end{enumerate}
+           
+&
+
+\begin{enumerate}
+\item 2 hours
+\item 12 hours
+\item 8 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item 5 hours
+\item 15 hours
+\item 13 hours
+\end{enumerate}
+
+&
+\begin{enumerate}
+\item Yes
+\item Yes
+\item Yes
+\end{enumerate}
+&
+\begin{enumerate}
+\item Jaap made the preface, we took some extra time to find some literature.
+\item Took a bit longer due to extra feedback rounds.
+\item This has been merged with the product planning document, The actual time is the time we took to create and update this full document, not just the MoSCoW bullets.
+\end{enumerate} 
+\end{tabular}
+\end{table}
+
+Problems we encountered:\\
+Writing a document often did not result in creating the glossaries and references subsections. We need to ensure this will become a standard section of writing a document.\\
+Reviewing Pull-Requests was somewhat vague, and often took too long to complete and give feedback. We agreed on a better workflow to make sure we keep the overview in Pull-Requests. This will also be brought up every sprint meeting.\\
+We found we sometimes were too passive as issue assignee. Dividing subtasks did not often occur until late in the week. We agreed to make smaller issues and bring this up earlier.\\
+We did not really do pair programming the way we wanted to. This is partly due to the large amount of documentation we had to do this week. We agreed to do this more actively in the next sprints.\\
+We agreed on keeping time better by editing the storypoints on waffle.io during the sprint. 
+
+
+
+
+\end{document}
