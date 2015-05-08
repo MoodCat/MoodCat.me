@@ -14,3 +14,5 @@
 *.blg
 *.bbl
 *.texpadtmp
+*.lock
+.texpadtmp/
