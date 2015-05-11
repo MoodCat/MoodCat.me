@@ -3,11 +3,11 @@
 \section{High-level product backlog}
 The MoSCoW model is used to structure the high-level product backlog.
 The items are listed according to the priority in relation to the other items in the backlog.
-The backlog is translated to an actual list of issues on GitHub which is ordered using Waffle\cite{waffle}.
+The backlog is translated to an actual list of issues on \gls{GitHub} ( which is ordered using Waffle\cite{waffle}.
 \input{requirements}
 
 \section{Roadmap}
-The roadmap below shows a general overview of the goals for each SCRUM sprint in a week.
+The roadmap below shows a general overview of the goals for each \gls{SCRUM} sprint in a week.
 This is an early planning and is expected to change.
 
 \begin{itemize}
@@ -34,7 +34,7 @@ This week we will set up a connection between the frontend and backend system.
 \begin{itemize}
 \item Create various APIs on the backend.
 \item Develop frontend to backend connection.
-\item Develop interface on frontend to use APIs.
+\item Develop interface on frontend to use \gls{APIs}.
 \end{itemize}
 
 \item Week 4: Sprint 3\\
@@ -103,11 +103,7 @@ Then I should see a list of rooms.
 
 As a user,\\
 When I select a room,\\
-Then the current song should be played.
-
-As a user,\\
-When I select a room,\\
-Then I should see a chat box.
+Then the current song should be played and I should see a chat box with the latest messages in sent in this room .
 
 As a user,\\
 When I type in the chat message input field,\\
@@ -126,36 +122,29 @@ As a user,\\
 When I click on the 'mute' button,\\
 Then the music should be muted.
 
-As a user,\\
-When I join a room,\\
-Then I should see the latest messages sent in this room.
-
-\section{User stories of defects (if applicable)}
-As of the time of writing, no defects have been discovered.
-
-\section{User stories of technical improvements (if applicable)}
-As of the time of writing, no technical improvements were made.
-
 \section{User stories of know-how acquisition}
+As a developer, \\
+When I do not know something, \\
+Then I will search on the internet for relevant information.
 
 \section{Initial release plan}
-
+%3.5. Initial release plan (milestones, MRFs per release)
+Our milestones consists only of the sprint number .
+For example, if a feature shall be made in Sprint 3 it has milestone Sprint 3. 
 
 \chapter{Definition of Done}
 We need to set a definition of done.
 This entails that for every feature, sprint and the end product, we will define what we consider "done".\\
 
 A feature is completed when it is implemented according to its specification and the code is well tested using unit tests.
-Furthermore, the public API (the public methods) of introduced classes should be well-documented using JavaDoc or NgDoc and follow our checkstyle and markup rules.
+Furthermore, the public API (the public methods) of introduced classes should be well-documented using \gls{JavaDoc} or \gls{NgDoc} and follow our \gls{checkstyle} and markup rules.
 Finally, the feature must be reviewed by at least one team member that was not directly involved in creating the code and tests.
 If all these prerequisites are met, the pull request can be merged.\\
 
 We will use sprint iterations of one week. All stories assigned for a sprint should be done at the end of a sprint.
 If a story could not be completed in the sprint, it will be copied to the next sprint and this will be discussed in the sprint reflection in order to prevent planning failures in the future.
-The system also has to be manually tested for the main interaction with the system. Lastly, integration tests are created and ran succesfully.\\
+The system also has to be manually tested for the main interaction with the system. Lastly, integration tests are created and ran successfully.\\
 
 The final product is done when all requirements are fulfilled and the implementation matches the specification. The implementation should be well tested using unit tests and preferably integration / end-to-end tests as well.
 If a should-have requirement is not implemented, this has to be agreed upon by all team members with a valid reason, and the product should still be usable without the feature.
-Code is consistent, validated by the SIG test and documented.
-
-\chapter{Glossary}
+Code is consistent, validated by the \gls{SIG} test and documented.
