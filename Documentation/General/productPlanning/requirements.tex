@@ -18,7 +18,9 @@ Within these functional requirements, four categories can be identified using th
 \item The web interface shall show the user a page where they can select their current mood.
 
 \item The web interface shall show the following moods:
- Nervous, Exiting, Happy, Pleasing, Relaxing, Peaceful, Calm, Sleepy, Bored and Sad. \footnote{This list has been chosen, because it's well spread over the grid. This is also a popular list in literature for example \cite{Book}}
+ Nervous, exciting, happy, pleasing, relaxing, peaceful, calm, sleepy, bored and sad. \footnote{This list has been chosen, because it's well spread over the grid. This is also a popular list in literature for example \cite{Book}}
+
+\item The system will create and keep track of rooms, rooms consist of a currently played song and a chat.
 
 \item The system shall serve the user a list of rooms, ordered by how close they match the mood of the user.
 
@@ -107,9 +109,9 @@ Within these functional requirements, four categories can be identified using th
 
 \item Git shall be used with the PR methodology: Every new feature will be developed in a branch, once completed it will be turned into a pull request. This will be reviewed and improved, and if it is accepted the branch gets merged into master.
 
-\item Front-end and Back-end shall communicate in a RESTful way, using an API.
+\item Front-end and Back-end shall communicate using an API.
 
-\item The product shall consist of a separate front end and backend repo, ensuring proper RESTful implementation is used.
+\item The product shall consist of a separate front end and backend repo, ensuring they only communicate through the API.
 
 \item The backend will be implemented in Java. The front-end web app will be built in \gls{HTML}, \gls{CSS} and \gls{JavaScript}, using the \gls{AnuglarJS} framework. 
 
