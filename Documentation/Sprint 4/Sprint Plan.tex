@@ -14,28 +14,133 @@ Group : Multimedia services 1\\
 
 
 \begin{table}[h]
-\begin{tabular}{|p{6cm}|p{5.5cm}|p{4cm}|p{3cm}|}
+\begin{tabular}{|p{4.5cm}|p{7cm}|p{4cm}|p{2.6cm}|}
 \textbf{User Story} & \textbf{Task} & \textbf{Task assigned to} & \textbf{Estimated Effort per Task} \\
-User Story 1 description & \begin{enumerate}
-\item task 1
-\item task 2
-\item task 3
+
+
+As a developer, I want to have a clear interface of the API calls between the frontend and the backend.
+
+&
+\begin{enumerate}
+\item Continue discussion on API contract.
+\item Update room selection API calls backend.
+\item Update room API calls frontend.
+\item Update chat API call backend.
+\item Update chat API call frontend.
 \end{enumerate}
 
 & 
 \begin{enumerate}
-\item member task 1
-\item member task 2
-\item member task 3
+\item Jaap Heijligers
+\item Gijs Weterings
+\item Tim van der Lippe
+\item Gijs Weterings
+\item Eva Anker
 \end{enumerate}
 
 & 
-estimated time \\
+\begin{enumerate}
+\item 10 hours
+\item 4 hours
+\item 4 hours
+\item 4 hours
+\item 4 hours
+\end{enumerate}
+\\
 
-           
+As a user, I want to classify songs based on arousal and valence to improve the system.
+
+&
+\begin{enumerate}
+\item Implement frontend function thumbs up and down.
+\item Implement frontend function SAMs.
+\item Update song vector based on user feedback.
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Eva Anker
+\item Jan-Willem Gmelig Meyling
+\item Gijs Weterings
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 6 hours
+\item 4 hours
+\item 6 hours
+\end{enumerate}
+\\
+
+As a user, when I select a mood, I want to see rooms that are relevant to my current mood.
+
+&
+\begin{enumerate}
+\item Implement nearest neighbours to find songs fitting the current room based on their vector distance.
+\item Retrieve song data from database. This should also consider the input in the database.
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Tim van der Lippe
+\item Jaap Heijligers
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 4 hours
+\item 6 hours
+\end{enumerate}
+\\
+
+As a user, when a song ends, I want the system to play the next one.
+&
+\begin{enumerate}
+\item Create room instances 
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Eva Anker
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 6 hours
+\end{enumerate}
+\\
+
+
+As a developer, I want to improve the user interaction on the website.
+&
+\begin{enumerate}
+\item Style pages and UI elements
+\item Fix duplication bug in state transformation.
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item Tim van der Lippe
+\item Tim van der Lippe
+\end{enumerate}
+
+& 
+\begin{enumerate}
+\item 10 hours
+\item 4 hours
+\end{enumerate}
+\\
+          
 \end{tabular}
 \end{table}
+\newpage
 
+\section*{Other activities}
+Sprint planning: 10 hours\\
+Sprint reflection: 10 hours\\
+Daily Scrum Meetings: 8 hours\\
+Reviewing Pull-Requests: 20 hours\\
+Meetings with stakeholders: 2.5 hours\\
 
 
 \end{document}
