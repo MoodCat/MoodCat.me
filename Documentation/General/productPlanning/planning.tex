@@ -3,11 +3,11 @@
 \section{High-level product backlog}
 The MoSCoW model is used to structure the high-level product backlog.
 The items are listed according to the priority in relation to the other items in the backlog.
-The backlog is translated to an actual list of issues on GitHub which is ordered using Waffle\cite{waffle}.
+The backlog is translated to an actual list of issues on \gls{GitHub} (which is ordered using Waffle\cite{waffle}).
 \input{requirements}
 
 \section{Roadmap}
-The roadmap below shows a general overview of the goals for each SCRUM sprint in a week.
+The roadmap below shows a general overview of the goals for each \gls{SCRUM} sprint in a week.
 This is an early planning and is expected to change.
 
 \begin{itemize}
@@ -34,39 +34,42 @@ This week we will set up a connection between the frontend and backend system.
 \begin{itemize}
 \item Create various APIs on the backend.
 \item Develop frontend to backend connection.
-\item Develop interface on frontend to use APIs.
+\item Develop interface on frontend to use \gls{APIs}.
 \end{itemize}
 
 \item Week 4: Sprint 3\\
-The first version of the music-matching algorithm will be created using Test-Driven Development (TDD)\cite{TDD}.
+The first version of the music-matching algorithm will be created. \footnote{We found out making the music matching algorithm was not feasible. We discussed with our stakeholder and decided to let it go.}
 
 \begin{itemize}
 \item Choose songs to use as test data.
 \item Create testcases to measure the performance of our algorithm.
-\item Create initial version of algorithm.
+\item Design the neural network. 
+\item You can vote how good or bad a song is.
 \end{itemize}
 
 \item Week 5: Sprint 4\\
-The music-matching algorithm will be extended.
+The connection between the frontend and backend will be adjusted. We will get a basic overview of to to create an algorithm that will provide song suggestions for the room.
 
 \begin{itemize}
-\item Assess the quality of the initial algorithm.
-\item Incorporate user feedback in the algorithm.
+\item Make API's for the frontend (chat and general room).
+\item Connection between API's and backend.
+\item Make a user classification system.
+\item Use nearest neighbour to find rooms that suits a mood.
 \end{itemize}
 
 \item Week 6: Sprint 5\\
-The music-matching algorithm will be tweaked and extended. We also review our own code and test quality, since we're half way.
+The music-matching algorithm will be made. We also review our own code and test quality, since we're half way.
 
 \begin{itemize}
 \item Review code and test quality.
-\item Improve Algorithm
+\item Make the matching algorithm between users and rooms.
 \end{itemize}
 
 \item Week 7: Sprint 6\\
-We will apply Sig feedback and implement an auto room creation system.
+We will apply \gls{SIG} feedback and implement an auto room creation system.
 
 \begin{itemize}
-\item Apply Sig feedback.
+\item Apply \gls{SIG} feedback.
 \item Implement auto room creation system.
 \end{itemize}
 
@@ -103,11 +106,7 @@ Then I should see a list of rooms.
 
 As a user,\\
 When I select a room,\\
-Then the current song should be played.
-
-As a user,\\
-When I select a room,\\
-Then I should see a chat box.
+Then the current song should be played and I should see a chat box with the latest messages that have been sent in this room .
 
 As a user,\\
 When I type in the chat message input field,\\
@@ -126,36 +125,23 @@ As a user,\\
 When I click on the 'mute' button,\\
 Then the music should be muted.
 
-As a user,\\
-When I join a room,\\
-Then I should see the latest messages sent in this room.
-
-\section{User stories of defects (if applicable)}
-As of the time of writing, no defects have been discovered.
-
-\section{User stories of technical improvements (if applicable)}
-As of the time of writing, no technical improvements were made.
-
-\section{User stories of know-how acquisition}
 
 \section{Initial release plan}
-
+Each sprint has a corresponding milestone. For example, if a feature will be developed during sprint 3, the corresponding GitHub issue will have milestone 3. This makes sure that the roadmap outlines are closely followed and progress can be easily determined by using the GitHub tools.
 
 \chapter{Definition of Done}
 We need to set a definition of done.
 This entails that for every feature, sprint and the end product, we will define what we consider "done".\\
 
 A feature is completed when it is implemented according to its specification and the code is well tested using unit tests.
-Furthermore, the public API (the public methods) of introduced classes should be well-documented using JavaDoc or NgDoc and follow our checkstyle and markup rules.
+Furthermore, the public API (the public methods) of introduced classes should be well-documented using \gls{JavaDoc} or \gls{NgDoc} and follow our \gls{checkstyle} and markup rules.
 Finally, the feature must be reviewed by at least one team member that was not directly involved in creating the code and tests.
 If all these prerequisites are met, the pull request can be merged.\\
 
 We will use sprint iterations of one week. All stories assigned for a sprint should be done at the end of a sprint.
 If a story could not be completed in the sprint, it will be copied to the next sprint and this will be discussed in the sprint reflection in order to prevent planning failures in the future.
-The system also has to be manually tested for the main interaction with the system. Lastly, integration tests are created and ran succesfully.\\
+The system also has to be manually tested for the main interaction with the system. Lastly, integration tests are created and ran successfully.\\
 
 The final product is done when all requirements are fulfilled and the implementation matches the specification. The implementation should be well tested using unit tests and preferably integration / end-to-end tests as well.
 If a should-have requirement is not implemented, this has to be agreed upon by all team members with a valid reason, and the product should still be usable without the feature.
-Code is consistent, validated by the SIG test and documented.
-
-\chapter{Glossary}
+The code base is formatted and documentated in a consistent manner and validated by the \gls{SIG} test

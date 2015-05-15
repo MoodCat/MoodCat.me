@@ -13,31 +13,20 @@ Within these functional requirements, four categories can be identified using th
 
 \item The login mechanism shall show an error page when the user does not authorize MoodCat to have access to their SoundCloud data.
 
-\item The web interface shall show a first-use tutorial upon logging in succesfully for the first time.
-
 \item The web interface shall show the user a page where they can select their current mood.
 
 \item The web interface shall show the following moods:
-		\begin{itemize}
-		\item Nervous
-		\item Exiting
-		\item Happy
-		\item Pleasing
-		\item Relaxing
-		\item Peaceful
-		\item Calm
-		\item Sleepy
-		\item Bored
-		\item Sad
-		\end{itemize}
+ Nervous, exciting, happy, pleasing, relaxing, peaceful, calm, sleepy, bored and sad. \footnote{This list has been chosen, because it's well spread over the grid. This is also a popular list in literature for example \cite{Book}}
+
+\item The system will create and keep track of rooms, rooms consist of a currently played song and a chat.
 
 \item The system shall serve the user a list of rooms, ordered by how close they match the mood of the user.
 
-\item The web interface shall present the user with a room when it is chosen.
+\item The web interface shall present the user with a room when it is chosen, which consists of a chat and music player.
 	
-\item The platform should be able to stream music to the client
+\item The platform should be able to stream music to the client.
 
-\item The system shall use a multi-layer perceptron system to predict the mood of a song.
+\item The system shall use an external library or API to predict the mood of a song.
 
 \item The system will use a recommender system to determine the next song to be played in each room.
 
@@ -48,29 +37,23 @@ Within these functional requirements, four categories can be identified using th
 
 \item A room shall contain a chat, connecting people with the same mood together.
 
-\item A room shall contain a now playing slider.
+\item A room shall contain a now playing progress bar.
 
 \item The web interface shall give the user the option to mute or disconnect the current stream.
 
 \item The web interface shall notify the user if they made an illogical combination of moods, warning them results may vary.
 
-\item A room has a button to upvote the current song, indicating the song is a good fit to the room.
+\item A room has a button to up-vote the current song, indicating the song is a good fit to the room.
 
-\item A room has a button to downvote the current song, indicating the song is a bad fit to the room. This will also vote to skip the song.
+\item A room has a button to down-vote the current song, indicating the song is a bad fit to the room.
 
-\item A song shall be skipped in one of the following situations:
-	\begin{itemize}
-	\item The song received $\frac{\$number\_of\_users\_in\_room}{3}$ votes to skip.
-	\item The song received at least 10 votes, and the ratio upvote:downvote is 1:2 or less.
-	\end{itemize}
-
-\item The multi-layer perceptron will be initialized by generating values from the metadata in our dataset.
-
-\item The upvotes and downvotes for a song change the weights of the multi-layer perceptron.
+\item When a song is down-voted the user gets buttons to tell how he would rate the song (as arousal/valence).
 
 \item The user shall be rewarded for up- and downvoting with "treats". These treats are achievement points.
 
-\item The system shall retrieve more metadata about a song from AcousticBrainz\footnote{\url{http://acousticbrainz.org/}}.
+\item The user should have a button to vote to skip a song in the current room.
+
+\item The system shall retrieve more metadata about a song from \gls{AcousticBrainz}\footnote{\url{http://acousticbrainz.org/}}.
 
 \end{itemize}
 
@@ -90,6 +73,7 @@ Within these functional requirements, four categories can be identified using th
 
 \item Visualisation for the current mood
 
+\item The web interface shall show a first-use tutorial upon logging in successfully for the first time.
 
 \item Show artist trivia information for the now playing song.
 
@@ -118,20 +102,20 @@ Within these functional requirements, four categories can be identified using th
 
 \item Git shall be used with the PR methodology: Every new feature will be developed in a branch, once completed it will be turned into a pull request. This will be reviewed and improved, and if it is accepted the branch gets merged into master.
 
-\item Frontend and Backend shall communicate in a RESTful way, using an API.
+\item Frontend and Backend shall communicate using an API.
 
-\item The product shall consist of a seperate frontend and backend repo, ensuring proper RESTful implementation is used.
+\item The product shall consist of a separate frontend and backend repo, ensuring they only communicate through the API.
 
-\item The backend will be implemented in Java. The frontend web app will be built in HTML, CSS and JavaScript, using the AngularJS framework. 
+\item The backend will be implemented in Java. The frontend web app will be built in \gls{HTML}, \gls{CSS} and \gls{JavaScript}, using the \gls{AnuglarJS} framework. 
 
-\item The project shall use Continuous Integration to ensure the entire codebase is tested for every change. In this project, Travic CI will be the tool of choice.
+\item The project shall use Continuous Integration to ensure the entire codebase is tested for every change. In this project, \gls{Travis CI} will be the tool of choice.
 
 \item Code readability shall be safeguarded with the use of Checkstyle and FindBugs. Code formatting will also be agreed upon to prevent auto-formatting issues in git diffs.
 
-\item Core systems shall be unit tested with a coverage of at least 80%. In addition, integration tests can be implemented.
+\item Core systems shall be unit tested with a coverage of at least 80\%. In addition, integration tests can be implemented.
 
 \item Issues shall be tracked using waffle.io\footnote{\url{http://www.waffle.io}}. This ensures a Scrum style tracking of issues, while still having the overview on github.
 
-\item Every package, class and method shall be documented using JavaDoc. Angular controllers must be documented using NgDoc. 
+\item Every package, class and method shall be documented using JavaDoc. Javascript code will be documented using NgDoc. 
 
 \end{itemize}

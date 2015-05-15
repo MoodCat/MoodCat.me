@@ -1,5 +1,7 @@
 \documentclass{tudelft-report}
+\let\cleardoublepage\clearpage
 
+\input{glossary}
 \begin{document}
 
 %% Use Roman numerals for the page numbers of the title pages and table of
@@ -13,7 +15,7 @@
 		Jan-Willem Gmelig Meyling (jgmeligmyling 4305167)\\
 		Tim van der Lippe (tvanderlippe 4289439)}
 \affiliation{Technische Universiteit Delft}
-\coverimage{cover.jpg}
+\coverimage{cover.png}
 \makecover
 
 %% Include an optional title page.
@@ -34,6 +36,7 @@
 
 %\input{appendix-a}
 
+\printglossary
 \bibliography{report}
 
 \end{document}

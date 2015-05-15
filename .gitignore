@@ -6,6 +6,13 @@
 *.log
 *.aux
 *.bak
+*.gls
+*.glo
+*.glg
+*.ist
+*.toc
+*.bbl
+*.blg
 
 !SE\ deliverables/*.pdf
 
@@ -16,3 +23,4 @@
 *.texpadtmp
 *.lock
 .texpadtmp/
+
