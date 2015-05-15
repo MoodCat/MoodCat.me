@@ -13,8 +13,6 @@ Within these functional requirements, four categories can be identified using th
 
 \item The login mechanism shall show an error page when the user does not authorize MoodCat to have access to their SoundCloud data.
 
-\item The web interface shall show a first-use tutorial upon logging in successfully for the first time.
-
 \item The web interface shall show the user a page where they can select their current mood.
 
 \item The web interface shall show the following moods:
@@ -39,7 +37,7 @@ Within these functional requirements, four categories can be identified using th
 
 \item A room shall contain a chat, connecting people with the same mood together.
 
-\item A room shall contain a now playing slider.
+\item A room shall contain a now playing progress bar.
 
 \item The web interface shall give the user the option to mute or disconnect the current stream.
 
@@ -47,19 +45,13 @@ Within these functional requirements, four categories can be identified using th
 
 \item A room has a button to up-vote the current song, indicating the song is a good fit to the room.
 
-\item A room has a button to down-vote the current song, indicating the song is a bad fit to the room. This will also vote to skip the song.
+\item A room has a button to down-vote the current song, indicating the song is a bad fit to the room.
 
-\item A song shall be skipped in one of the following situations:
-	\begin{itemize}
-	\item The song received $\frac{\$number\_of\_users\_in\_room}{3}$ votes to skip.
-	\item The song received at least 10 votes, and the ratio upvote:downvote is 1:2 or less.
-	\end{itemize}
-
-\item The multi-layer perceptron will be initialized by generating values from the metadata in our dataset.
-
-\item The upvotes and downvotes for a song change the weights of the multi-layer perceptron.
+\item When a song is down-voted the user gets buttons to tell how he would rate the song (as arousal/valence).
 
 \item The user shall be rewarded for up- and downvoting with "treats". These treats are achievement points.
+
+\item The user should have a button to vote to skip a song in the current room.
 
 \item The system shall retrieve more metadata about a song from \gls{AcousticBrainz}\footnote{\url{http://acousticbrainz.org/}}.
 
@@ -81,6 +73,7 @@ Within these functional requirements, four categories can be identified using th
 
 \item Visualisation for the current mood
 
+\item The web interface shall show a first-use tutorial upon logging in successfully for the first time.
 
 \item Show artist trivia information for the now playing song.
 
@@ -123,6 +116,6 @@ Within these functional requirements, four categories can be identified using th
 
 \item Issues shall be tracked using waffle.io\footnote{\url{http://www.waffle.io}}. This ensures a Scrum style tracking of issues, while still having the overview on github.
 
-\item Every package, class and method shall be documented using JavaDoc. Angular controllers must be documented using NgDoc. 
+\item Every package, class and method shall be documented using JavaDoc. Javascript code will be documented using NgDoc. 
 
 \end{itemize}
