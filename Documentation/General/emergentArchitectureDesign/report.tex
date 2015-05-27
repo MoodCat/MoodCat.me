@@ -1,12 +1,15 @@
 \documentclass{tudelft-report}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}  %I get error while running, but they are gonna after commenting this out.
+\let\cleardoublepage\clearpage %let the clear page disapear.
+\usepackage{float}
+
 \input{glossary}
 \begin{document}
 
 %% Use Roman numerals for the page numbers of the title pages and table of
 %% contents.
 \frontmatter
-
+	
 \title[For MoodCat]{Emergent Architecture Design}
 \author{\small Eva Anker (eanker 4311426)\\
 		Gijs Weterings (gweterings 4272587)\\
@@ -14,7 +17,7 @@
 		Jan-Willem Gmelig Meyling (jgmeligmyling 4305167)\\
 		Tim van der Lippe (tvanderlippe 4289439)}
 \affiliation{Technische Universiteit Delft}
-\coverimage{cover.jpg}
+\coverimage{cover.png}
 \makecover
 
 %% Include an optional title page.
