@@ -55,7 +55,7 @@ The third paragraph illustrates the data management of the system.
 Moodcat is subdivided into two components: the frontend website and the backend processing service.
 In this chapter we will explain how these components are composed and how they interact with each other.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \includegraphics[scale=.6]{architectureOverview.png}
 \caption{Architecture overview for Moodcat}
 \label{fig:architectureOverview}
@@ -66,7 +66,7 @@ The frontend will be the visible part for the user.
 After logging in to our services, the user will be able to select his mood and based on that MoodCat will provide several music listening rooms.
 In these rooms the user can interact with other users through the chat while listening to the music.
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \includegraphics[scale=.4]{useCases.png}
 \caption{Use case diagram for Moodcat}
 \label{fig:MoodCatUseCase}
@@ -95,13 +95,13 @@ The Moodcat backend has several subcomponents, each with their own responsibilit
 In the following paragraphs we will explain the last two subcomponents.
 
 \subsubsection{REST API}
-The MoodCat REST\cite{rest} connects the frontend to the music matching algorithm.
 The backend keeps track of which rooms are active and what song is currently played in the room.
+The API can process user votes and classifications in order to improve the system.
 Furthermore, the backend is responsible for transmitting the chat messages between the users in the room.
 An example interaction between the frontend and the backend is given in \ref{fig: backendInteraction}.
 % I am not so happy that we do not mention how we rely on Soundcloud for the streaming here, but I have the feeling it does not really fit here. Suggestions?
 
-\begin{figure}[h!]
+\begin{figure}[H]
 \includegraphics[scale=.4]{backendInteraction.png}
 \caption{Example interaction frontend and backend}
 \label{fig: backendInteraction}
@@ -118,11 +118,15 @@ The backend will be tested with unit tests written using JUnit and Mockito.
 
 \subsubsection{Music matching algorithm}\label{MatchingAlgorithm}
 The music matching algorithm determines and compares moods for songs, rooms and users.
-Moodcat will be developed around a learning algorithm.
-This means that Moodcat will improve over time.
-Default values will be determined by examining the audio features from our data set.
-Then, through a system of user votes, the system will learn and improve over time.
+The classification of songs will be done by classification from the user, which will be encouraged with gamification.
+Moodcat will improve over time, because the more people classify the more accurate it gets.
+All entities are modeled with a valence and arousal vector. Valence and arousal are measured in a range of -1 to 1. By default, a song will be classified with the default vector: valence 0 and arousal 0. This would mean an absolute neutral mood. This classification (mapping) will be updated over time by processing user feedback. Therefore the longer the system is running, the more accurate the classifications become.
 
+When a user votes down, the user will be requested to classify the song.
+If there are more up-votes than down-votes the classification will not have effect, because the majority of the audience says the song fits the room.
+
+Using a nearest-neighbour algorithm we will determine which song fits a room and which room fits a user.
+This can ultimately be improved by personalising according to the listening history of the user.
 
 \section{Hardware/software mapping}
 For navigating through the user interface and posting messages in the chatroom a keyboard and mouse, or a touch screen with onscreen keyboard is required.
@@ -137,15 +141,26 @@ The users browser should support these technologies in order to use Moodcat.
 Moodcat has to handle both song data and chatroom data.
 
 \par
-For the song we store the basic properties, like artist, song title, genre and duration.
-Furthermore each song has its own \gls{valence} and \gls{arousal} value, which is computed and corrected by the music matching algorithm.
-The algorithm uses some of the audio features of the track for the computation of the valence and arousal values, these features are stored with the song.
+We try do deduplicate artists from the Soundcloud data as much as possible. We identify artists in our database by an unique identifier. Besides this identifier, we store the name for the artist. The name will be used to display in the frontend.
 
 \par
-For the chatrooms we store basic properties, the currently playing song, the room members and a chat message.
+For the song we store the basic properties, like artist, song title and duration.
+A song has an unique id in our system and also an id from \gls{Soundcloud}, in order to fetch data from Soundcloud.
+We also include an url to display the artwork of a song.
 
-\begin{figure}[h!]
-\includegraphics[scale=.4]{erDiagram.png}
+Furthermore each song has its own \gls{valence} and \gls{arousal} value, this is updated when users classify the song.
+This classification will be done in the Music Matching Algorithm as described above. In order to prevent incorrect or unwanted classifications, we also have to store the netto value of up-votes compared to the down-votes.
+
+\par 
+Each room has an unique room identifier, which is used to find the room requested from the API call.
+We also store basic properties: The name of the room to display on the frontend, the currently playing song and the duration of the song currently playing.
+Furthermore, the arousal and valence values of the room are stored.
+
+\par
+For a chatmessage we store the author, actual message, timestamp and the room in which the message was posted.
+
+\begin{figure}[H]
+\includegraphics[scale=.6]{erDiagram.png}
 \caption{ER diagram for Moodcat}
 \label{fig:ER diagram of the described entities}
 \end{figure}
@@ -153,9 +168,7 @@ For the chatrooms we store basic properties, the currently playing song, the roo
 \par
 Most of the currently used data will be stored in memory, as it would be intensive, for example, to query the database for each chat message that comes in.
 However, the data will eventually be persisted in a PostgreSQL\cite{PostgreSQL} \gls{RDB}.
-One one hand this is because it would be impractical to store our entire dataset in memory.
-% On the other hand, well the other hand is busy %
-On the other hand, this is useful because then the system can continue where it has left off after a restart.
+On one hand, it would be impractical to store our entire dataset in memory, on the other hand, then the system can continue where it has left off after a restart.
 
 \par
 We will connect our Java backend server to the PostgreSQL database using the Java Persistence API (JPA) and the Postgres JDBC driver.
@@ -165,7 +178,7 @@ We have chosen for these techniques because they provide a nice and clean API to
 
 \section{Concurrency}
 In order to scale up to thousands of connected clients, we should develop with concurrency in mind from the very first start.
-Moodcat uses the Soundcloud API in order to stream media to the clients.
+Moodcat uses the \gls{Soundcloud} API in order to stream media to the clients.
 This means that the audio stream does not have to pass through our servers.
 We do however have to handle the various API calls to interact with the backend, for example to play the next song or to broadcast a message in a room.
 
