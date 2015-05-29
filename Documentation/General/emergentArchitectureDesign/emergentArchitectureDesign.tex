@@ -96,7 +96,7 @@ In the following paragraphs we will explain the last two subcomponents.
 
 \subsubsection{REST API}
 The backend keeps track of which rooms are active and what song is currently played in the room.
-It also receives and processes the likes and dislikes, and if disliked the arousal/valence classification.
+The API can process user votes and classifications in order to improve the system.
 Furthermore, the backend is responsible for transmitting the chat messages between the users in the room.
 An example interaction between the frontend and the backend is given in \ref{fig: backendInteraction}.
 % I am not so happy that we do not mention how we rely on Soundcloud for the streaming here, but I have the feeling it does not really fit here. Suggestions?
@@ -120,12 +120,12 @@ The backend will be tested with unit tests written using JUnit and Mockito.
 The music matching algorithm determines and compares moods for songs, rooms and users.
 The classification of songs will be done by classification from the user, which will be encouraged with gamification.
 Moodcat will improve over time, because the more people classify the more accurate it gets.
-By default, a song will be classified with the default vector: valence 0 and arousal 0. This would mean an absolute neutral mood. Over time the values will move more to the actual values. These lie between -1 and 1.
+All entities are modeled with a valence and arousal vector. Valence and arousal are measured in a range of -1 to 1. By default, a song will be classified with the default vector: valence 0 and arousal 0. This would mean an absolute neutral mood. This classification (mapping) will be updated over time by processing user feedback. Therefore the longer the system is running, the more accurate the classifications become.
 
 When a user votes down, the user will be requested to classify the song.
 If there are more up-votes than down-votes the classification will not have effect, because the majority of the audience says the song fits the room.
 
-Using a nearest-neighbour algorithm we will determinate which song fits a room and which room fits a user.
+Using a nearest-neighbour algorithm we will determine which song fits a room and which room fits a user.
 This can ultimately be improved by personalising according to the listening history of the user.
 
 \section{Hardware/software mapping}
@@ -141,19 +141,19 @@ The users browser should support these technologies in order to use Moodcat.
 Moodcat has to handle both song data and chatroom data.
 
 \par
-We try do deduplicate artists from the Soundcloud data as much as possible. We identify artists in our database by an unique identifier. Besides this identifier, we store the name for the artist.
+We try do deduplicate artists from the Soundcloud data as much as possible. We identify artists in our database by an unique identifier. Besides this identifier, we store the name for the artist. The name will be used to display in the frontend.
 
 \par
 For the song we store the basic properties, like artist, song title and duration.
-A song has an unique id in our system and also an id from \gls{Soundcloud}, so we can fetch data from Soundcloud.
+A song has an unique id in our system and also an id from \gls{Soundcloud}, in order to fetch data from Soundcloud.
 We also include an url to display the artwork of a song.
 
 Furthermore each song has its own \gls{valence} and \gls{arousal} value, this is updated when users classify the song.
-This classification will be done in the Music Matching Algorithm as described above. So, we also have keep count of relative amount of up-votes compared to the down-votes.
+This classification will be done in the Music Matching Algorithm as described above. In order to prevent incorrect or unwanted classifications, we also have to store the netto value of up-votes compared to the down-votes.
 
 \par 
 Each room has an unique room identifier, which is used to find the room requested from the API call.
-We also store the basic properties, roomname,the currently playing song and the duration.
+We also store basic properties: The name of the room to display on the frontend, the currently playing song and the duration of the song currently playing.
 Furthermore, the arousal and valence values of the room are stored.
 
 \par
