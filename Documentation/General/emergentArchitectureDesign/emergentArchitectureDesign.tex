@@ -90,13 +90,17 @@ The Moodcat backend has several subcomponents, each with their own responsibilit
 \begin{itemize}
 \item the \textit{Static File Server} that serves the frontend website on a webserver;
 \item the \textit{REST API} which is used for communication about rooms and songs between the backend and frontend;
-\item the \textit{music matching algorithm} which is used to generate music suggestions for rooms and to find a room for a user.
+\item the \textit{Music Matching Algorithm} which is used to generate music suggestions for rooms and to find a room for a user.
 \end{itemize}
 In the following paragraphs we will explain the last two subcomponents.
 
 \subsubsection{REST API}
 The backend keeps track of which rooms are active and what song is currently played in the room.
-The API can process user votes and classifications in order to improve the system.
+When the backed is started, the backend retrieves rooms from the database and creates an instances for each of those.
+The backend keeps track of a current song, a history of previously played songs and a playing queue for future tracks to play.
+The information of a room and its current song can be requested by clients through the API.
+Next to requesting data, the API can process user votes and classifications in order to improve the system.
+When an API call results in the change of an attribute of a room, the room is updated in the database.
 Furthermore, the backend is responsible for transmitting the chat messages between the users in the room.
 An example interaction between the frontend and the backend is given in \ref{fig: backendInteraction}.
 % I am not so happy that we do not mention how we rely on Soundcloud for the streaming here, but I have the feeling it does not really fit here. Suggestions?
@@ -113,7 +117,7 @@ The backend and the frontend communicate over \Gls{HTTP} requests in the \Gls{JS
 % We might want to note Websockets at a later point
 The REST API will be written in Java using JAX-RS and Jackson.
 Jackson serializes Java objects to a JSON string based on their attributes, and vice versa: it is able to deserialize a Java object from a JSON string.
-This allows us to use JSON in the frondend, which is ideal in \Gls{JS}, but use classes and objects in Java, which greatly improves the testability of the responses.
+This allows us to use JSON in the frontend, which is ideal in \Gls{JS}, but use classes and objects in Java, which greatly improves the testability of the responses.
 The backend will be tested with unit tests written using JUnit and Mockito.
 
 \subsubsection{Music matching algorithm}\label{MatchingAlgorithm}
@@ -153,7 +157,8 @@ This classification will be done in the Music Matching Algorithm as described ab
 
 \par 
 Each room has an unique room identifier, which is used to find the room requested from the API call.
-We also store basic properties: The name of the room to display on the frontend, the currently playing song and the duration of the song currently playing.
+We also store some properties: The name of the room to display on the frontend, the currently playing song including its metadata, 
+and a playing queue and history of played songs.
 Furthermore, the arousal and valence values of the room are stored.
 
 \par
