@@ -202,18 +202,21 @@ The design patterns we use, as they are defined in the frameworks, are:
 \begin{enumerate}
 \item Lazy initialization (Hibernate):\\
 OneToMany-relations are fetched from the database when they are needed.
-This makes retrieval of entities that use embeddables faster. For example we are most of the time not interested in the \class{VAVector} of a \class{Room}, only when we need to update such a \class{Room}, which happens rarely.
+This not only makes retrieval of entities that use embeddables faster, we can also database calls.
+For example most of the time we are not interested in the songs that an artist produced, just his/her name.
 
 \item Object pooling (RestEasy, Guice):\\
 The http-connection to SoundCloud and database-connection to our PostgreSQL database are pooled for re-use.
 This way we only have to set up the connection once using said frameworks and reduce object retrieval time.
-The \class{DBModule} uses a JpaPersistModule which is injected by Guice, whereas the \class{SoundCloudAPIConnector} uses a RestEasyClient.
+The \class{SoundCloudAPIConnector} uses a RestEasyClient.
+The database connection is handled by C3PO which is an extension of Hibernate.
 
 \item Memento (JPA, Guice):\\
-All database updates and retrievals are transactions, which impelement the Memento design pattern.
-This makes sure that all database changes are ACID.
-The methods are annotated by @Transactional, which Guice injects the transaction rollbacks.
-Then JPA can perform the fail-safes whenever necessary.
+All database updates and retrievals are transactions, which implement the Memento design pattern.
+This makes sure that all database changes are ACID\cite{ACID}.
+Classes instantiated through Guice dependency injection can annotate methods with @Transactional, so that the method is intercepted to enforce that the method is ran in a database transaction.
+This starts a new transaction if no transaction is active for the current thread.
+If any exceptions occur (either in the Java or database layer - for example unmet key constraints) the transaction will automatically be rolled back after the exception has been propagated upwards.
 All extensions of \class{AbstractDAO} have transactions.
 \end{enumerate}
 
@@ -221,17 +224,21 @@ The design patterns we implemented ourselves are:
 
 \begin{enumerate}
 \item Singleton:\\
-In order to enforce a single controlling unit, all of our backends are @Singleton.
+In order to enforce a single controlling unit, all of our backends \cite{backend} are @Singleton.
 For example the \class{ChatBackend} contains all roomInstances, which should be stateful in order to maintain cached collections of \class{ChatMessage}s.
 This speeds up message retrieval for users that join a room.
+It also reduces the amount of database updates, which lowers the network traffic.
+(Note: stateful should not be confused with the stateless property of the REST-api.
+From the request point-of-view all requests are stateless and don't influence future requests.)
 
 \item Facade:\\
 All APIs and backends implement the Facade design pattern.
 They are a single end-point which can connect several backends or DAOs.
 Therefore we can change the actual storage- and retrieval-structure, while making sure our API end-points and backends still provide the correct data in the correct structure.
 
-\item Observer:\\
-We will use the Observer pattern after converting our currently pull-based architecture to a stream pipeline using websockets.
-This way the frontend can continously receive updates whenever the backend notifies them.
-Therefore chat messages can be instantly received and no unncessary calls shall be made to the frontend.
+\item Observer (not implemented yet):\\
+We will use the Observer pattern after converting our currently poll-based architecture to a stream pipeline using websockets.
+This way the frontend can continuously receive updates whenever the backend notifies the clients.
+Therefore chat messages can be instantly received and no unnecessary calls shall be made to the frontend.
+Currently the frontend polls every second the backend to check if there are updates.
 \end{enumerate}
