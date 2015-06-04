@@ -85,6 +85,20 @@ AngularJS\cite{AngularJS} will be used as web framework, providing us two-way da
 The Object-oriented\cite{Wirfs-Brock} and Dependency Injection\cite{angularDI} driven nature of AngularJS makes it suitable for unit testing\cite{Binder}.
 Testing the frontend codebase will be done using the Karma\cite{Karma} testrunner, the Jasmine\cite{Jasmine} testing framework and the PhantomJS\cite{PhantomJS} headless\footnote{JavaScript runs in browsers and the written logic needs a DOM to interact with. A headless browser does not actually render the page and is therefore much faster in intergration tests.} browser.
 
+\label{frontendstructure}
+\subsubsection{Frontend structure}
+Angular works with \textit{controllers}, \textit{services} and \textit{directives}.
+Directives can thought of as physical elements on the webpage, yet they have \textit{controller} logic attached to it.
+Directives can be double binded to a scope. This means that the directive can both read and write to the scope.
+Scopes in Angular are \glspl{ViewModel}, and can contain both data and methods.
+A scope can recursively resolve data from its parent \textit{scope}, this is implemented through JavaScripts \gls{Prototype inheritence}.
+The top level scope is the so-called \textit{\$rootScope}.
+Services are singleton objects that can be used for shared logic between controllers.
+
+\par
+The system will be build around \textit{services} that connect with our backend API, for example the \class{RoomService} that queries rooms and the \class{ChatService} that manages chat messages within a room.
+The \textit{\$rootScope} will be used to store data such as the selected moods, current room and the current song.
+
 \subsection{Moodcat Backend}
 The Moodcat backend has several subcomponents, each with their own responsibility:
 \begin{itemize}
@@ -209,7 +223,7 @@ For example most of the time we are not interested in the songs that an artist p
 The http-connection to SoundCloud and database-connection to our PostgreSQL database are pooled for re-use.
 This way we only have to set up the connection once using said frameworks and reduce object retrieval time.
 The \class{SoundCloudAPIConnector} uses a RestEasyClient.
-The database connection is handled by C3PO which is an extension of Hibernate.
+The database connection is handled by C3PO which is an extension of Hibernate, our \gls{ORM} framework.
 
 \item Memento (JPA, Guice):\\
 All database updates and retrievals are transactions, which implement the Memento design pattern.
@@ -218,18 +232,26 @@ Classes instantiated through Guice dependency injection can annotate methods wit
 This starts a new transaction if no transaction is active for the current thread.
 If any exceptions occur (either in the Java or database layer - for example unmet key constraints) the transaction will automatically be rolled back after the exception has been propagated upwards.
 All extensions of \class{AbstractDAO} have transactions.
+
+\item Builder (QueryDSL, HttpClient):\\
+We use QueryDSL in order to easily create SQL queries that map to our Hibernate entities.
+QueryDSL allows you to write SQL queries using a builder pattern.
+For each database entity, QueryDSL generates a few classes (so named QClasses) which allow you to write SQL queries using a builder pattern.
+This introduces type safety, becuase schema changes will now cause compile errors if a query is not updated.
+
+The HttpClient that we use for our HTTP calls to the SoundCloud API also uses a builder pattern to set the path, parameters and headers for the request to be made.
+
 \end{enumerate}
 
 The design patterns we implemented ourselves are:
 
 \begin{enumerate}
 \item Singleton:\\
-In order to enforce a single controlling unit, all of our backends \cite{backend} are @Singleton.
-For example the \class{ChatBackend} contains all roomInstances, which should be stateful in order to maintain cached collections of \class{ChatMessage}s.
+In order to enforce a single controlling unit, all of our backends \cite{backend} are singleton.
+For example the \class{ChatBackend} contains all \class{RoomInstances}, which should be stateful\footnote{Stateful room instances should not be confused with the stateless nature of the REST-api. From the clients point-of-view all requests are stateless and don't influence future requests.} in order to maintain cached collections of \class{ChatMessages}.
 This speeds up message retrieval for users that join a room.
 It also reduces the amount of database updates, which lowers the network traffic.
-(Note: stateful should not be confused with the stateless property of the REST-api.
-From the request point-of-view all requests are stateless and don't influence future requests.)
+Also, the Angular \textit{services} for the backend, described in \ref{frontendstructure}, follow the singleton pattern as well.
 
 \item Facade:\\
 All APIs and backends implement the Facade design pattern.
