@@ -85,18 +85,37 @@ AngularJS\cite{AngularJS} will be used as web framework, providing us two-way da
 The Object-oriented\cite{Wirfs-Brock} and Dependency Injection\cite{angularDI} driven nature of AngularJS makes it suitable for unit testing\cite{Binder}.
 Testing the frontend codebase will be done using the Karma\cite{Karma} testrunner, the Jasmine\cite{Jasmine} testing framework and the PhantomJS\cite{PhantomJS} headless\footnote{JavaScript runs in browsers and the written logic needs a DOM to interact with. A headless browser does not actually render the page and is therefore much faster in intergration tests.} browser.
 
+\label{frontendstructure}
+\subsubsection{Frontend structure}
+Angular works with \textit{controllers}, \textit{services} and \textit{directives}.
+Directives can thought of as physical elements on the webpage, yet they have \textit{controller} logic attached to it.
+Directives can be double binded to a scope. This means that the directive can both read and write to the scope.
+Scopes in Angular are \glspl{ViewModel}, and can contain both data and methods.
+A scope can recursively resolve data from its parent \textit{scope}, this is implemented through JavaScripts \gls{Prototype inheritence}.
+The top level scope is the so-called \textit{\$rootScope}.
+Services are singleton objects that can be used for shared logic between controllers.
+
+\par
+The system will be build around \textit{services} that connect with our backend API, for example the \class{RoomService} that queries rooms and the \class{ChatService} that manages chat messages within a room.
+The \textit{\$rootScope} will be used to store data such as the selected moods, current room and the current song.
+
 \subsection{Moodcat Backend}
 The Moodcat backend has several subcomponents, each with their own responsibility:
 \begin{itemize}
 \item the \textit{Static File Server} that serves the frontend website on a webserver;
 \item the \textit{REST API} which is used for communication about rooms and songs between the backend and frontend;
-\item the \textit{music matching algorithm} which is used to generate music suggestions for rooms and to find a room for a user.
+\item the \textit{Music Matching Algorithm} which is used to generate music suggestions for rooms and to find a room for a user.
 \end{itemize}
 In the following paragraphs we will explain the last two subcomponents.
 
 \subsubsection{REST API}
 The backend keeps track of which rooms are active and what song is currently played in the room.
-The API can process user votes and classifications in order to improve the system.
+When the backed is started, it creates a room instance for each room in the database.
+For each room instance, the backend keeps track of a current song, a history of previously played songs 
+and a playing queue for future tracks to play.
+The information of a room and its current song can be requested by clients through the API.
+Next to requesting data, the API can process user votes and classifications in order to improve the system.
+When an API call results in the change of an attribute of a room, the room is updated in the database.
 Furthermore, the backend is responsible for transmitting the chat messages between the users in the room.
 An example interaction between the frontend and the backend is given in \ref{fig: backendInteraction}.
 % I am not so happy that we do not mention how we rely on Soundcloud for the streaming here, but I have the feeling it does not really fit here. Suggestions?
@@ -113,7 +132,7 @@ The backend and the frontend communicate over \Gls{HTTP} requests in the \Gls{JS
 % We might want to note Websockets at a later point
 The REST API will be written in Java using JAX-RS and Jackson.
 Jackson serializes Java objects to a JSON string based on their attributes, and vice versa: it is able to deserialize a Java object from a JSON string.
-This allows us to use JSON in the frondend, which is ideal in \Gls{JS}, but use classes and objects in Java, which greatly improves the testability of the responses.
+This allows us to use JSON in the frontend, which is ideal in \Gls{JS}, but use classes and objects in Java, which greatly improves the testability of the responses.
 The backend will be tested with unit tests written using JUnit and Mockito.
 
 \subsubsection{Music matching algorithm}\label{MatchingAlgorithm}
@@ -153,7 +172,8 @@ This classification will be done in the Music Matching Algorithm as described ab
 
 \par 
 Each room has an unique room identifier, which is used to find the room requested from the API call.
-We also store basic properties: The name of the room to display on the frontend, the currently playing song and the duration of the song currently playing.
+We also store some properties: The name of the room to display on the frontend, the currently playing song including its metadata, 
+and a playing queue and history of played songs.
 Furthermore, the arousal and valence values of the room are stored.
 
 \par
@@ -205,3 +225,62 @@ The second suggestion was retrieving a random subset of songs to run the NN algo
 We ran some calculations, and it looked promising, but it underestimated the locality clustering of the data. 
 We also considered \gls{LSH}, but this is better suited for high-dimension data, and MapReduce, but this wasn't feasible for the amount of time we had.
 In the end, we threw away the original NN implementation we had and use spatial indexing in the database, using \gls{RTREE}s.
+
+\section{Design Patterns}
+
+Due to the usage of various libraries and frameworks, our codebase does not contain a lot of helper mechanisms.
+Therefore the number of design patterns implemented is lower, because we use a lot of patterns defined in the frameworks.
+
+The design patterns we use, as they are defined in the frameworks, are:
+
+\begin{enumerate}
+\item Lazy initialization (Hibernate):\\
+OneToMany-relations are fetched from the database when they are needed.
+This not only makes retrieval of entities that use embeddables faster, we can also database calls.
+For example most of the time we are not interested in the songs that an artist produced, just his/her name.
+
+\item Object pooling (RestEasy, Guice):\\
+The http-connection to SoundCloud and database-connection to our PostgreSQL database are pooled for re-use.
+This way we only have to set up the connection once using said frameworks and reduce object retrieval time.
+The \class{SoundCloudAPIConnector} uses a RestEasyClient.
+The database connection is handled by C3PO which is an extension of Hibernate, our \gls{ORM} framework.
+
+\item Memento (JPA, Guice):\\
+All database updates and retrievals are transactions, which implement the Memento design pattern.
+This makes sure that all database changes are ACID\cite{ACID}.
+Classes instantiated through Guice dependency injection can annotate methods with @Transactional, so that the method is intercepted to enforce that the method is ran in a database transaction.
+This starts a new transaction if no transaction is active for the current thread.
+If any exceptions occur (either in the Java or database layer - for example unmet key constraints) the transaction will automatically be rolled back after the exception has been propagated upwards.
+All extensions of \class{AbstractDAO} have transactions.
+
+\item Builder (QueryDSL, HttpClient):\\
+We use QueryDSL in order to easily create SQL queries that map to our Hibernate entities.
+QueryDSL allows you to write SQL queries using a builder pattern.
+For each database entity, QueryDSL generates a few classes (so named QClasses) which allow you to write SQL queries using a builder pattern.
+This introduces type safety, because schema changes will now cause compile errors if a query is not updated.
+
+The HttpClient that we use for our HTTP calls to the SoundCloud API also uses a builder pattern to set the path, parameters and headers for the request to be made.
+
+\end{enumerate}
+
+The design patterns we implemented ourselves are:
+
+\begin{enumerate}
+\item Singleton:\\
+In order to enforce a single controlling unit, all of our backends \cite{backend} are singleton.
+For example the \class{ChatBackend} contains all \class{RoomInstances}, which should be stateful\footnote{Stateful room instances should not be confused with the stateless nature of the REST-api. From the clients point-of-view all requests are stateless and don't influence future requests.} in order to maintain cached collections of \class{ChatMessages}.
+This speeds up message retrieval for users that join a room.
+It also reduces the amount of database updates, which lowers the network traffic.
+Also, the Angular \textit{services} for the backend, described in \ref{frontendstructure}, follow the singleton pattern as well.
+
+\item Facade:\\
+All APIs and backends implement the Facade design pattern.
+They are a single end-point which can connect several backends or DAOs.
+Therefore we can change the actual storage- and retrieval-structure, while making sure our API end-points and backends still provide the correct data in the correct structure.
+
+\item Observer (not implemented yet):\\
+We will use the Observer pattern after converting our currently poll-based architecture to a stream pipeline using websockets.
+This way the frontend can continuously receive updates whenever the backend notifies the clients.
+Therefore chat messages can be instantly received and no unnecessary calls shall be made to the frontend.
+Currently the frontend polls every second the backend to check if there are updates.
+\end{enumerate}
