@@ -96,8 +96,9 @@ In the following paragraphs we will explain the last two subcomponents.
 
 \subsubsection{REST API}
 The backend keeps track of which rooms are active and what song is currently played in the room.
-When the backed is started, the backend retrieves rooms from the database and creates an instances for each of those.
-The backend keeps track of a current song, a history of previously played songs and a playing queue for future tracks to play.
+When the backed is started, it creates a room instance for each room in the database.
+For each room instance, the backend keeps track of a current song, a history of previously played songs 
+and a playing queue for future tracks to play.
 The information of a room and its current song can be requested by clients through the API.
 Next to requesting data, the API can process user votes and classifications in order to improve the system.
 When an API call results in the change of an attribute of a room, the room is updated in the database.
