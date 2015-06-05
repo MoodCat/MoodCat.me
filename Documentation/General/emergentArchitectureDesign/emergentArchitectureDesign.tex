@@ -193,4 +193,16 @@ Deadlocks will be prevented because the spawned threads will be joined before ac
 This will happen when we persist the algorithm output in the database.
 
 \section{Scalability}
-Concurrent clients are one thing, but we also have to scale the algorithms for growth. Initially, we planned on a nearest neighbours algorithm to match songs to rooms. Later on, we found out that while this works well for small datasets, finding the nearest neighbours in a system of a few million songs can prove to be a lot harder. The mission is clear: Find a way for the system to scale further. We went over several iterations of the system. At first, we had the nearest neighbours algorithm. Once we realised the issue here, we went for an ANN\footnote{Approximate nearest neighbour} algorithm to be able to use the nearest neighbour algorithm. This initially was planned to be a \gls{KD-Tree}. This still had issues with memory usage (O(N) complexity). The second suggestion was grabbing a random subset of songs to run the NN algorithm on. We ran some calculations, and it looked promising, but it underestimated the locality clustering of the data. We also considered \gls{LSH}, but this is better suited for high-dimension data. In the end, we threw away the nearest neighbours we had and use spatial indexing in the database, using \gls{RTREE}s.
+Concurrent clients are one thing, but we also have to scale the algorithms for growth.
+Initially, we planned on a nearest neighbours algorithm to match songs to rooms.
+Later on, we found out that while this works well for small datasets, finding the nearest neighbours in a system of a few million songs can prove to be a lot harder.
+The mission is clear: Find a way for the system to scale further.
+We went over several iterations of the system.
+At first, we had the nearest neighbours algorithm.
+Once we realised the issue here, we went for an ANN\footnote{Approximate nearest neighbour} algorithm to be able to use the nearest neighbour algorithm.
+This initially was planned to be a \gls{KD-Tree}.
+This still had issues with memory usage (O(N) complexity).
+The second suggestion was grabbing a random subset of songs to run the NN algorithm on.
+We ran some calculations, and it looked promising, but it underestimated the locality clustering of the data. 
+We also considered \gls{LSH}, but this is better suited for high-dimension data. 
+In the end, we threw away the nearest neighbours we had and use spatial indexing in the database, using \gls{RTREE}s.
