@@ -237,7 +237,7 @@ All extensions of \class{AbstractDAO} have transactions.
 We use QueryDSL in order to easily create SQL queries that map to our Hibernate entities.
 QueryDSL allows you to write SQL queries using a builder pattern.
 For each database entity, QueryDSL generates a few classes (so named QClasses) which allow you to write SQL queries using a builder pattern.
-This introduces type safety, becuase schema changes will now cause compile errors if a query is not updated.
+This introduces type safety, because schema changes will now cause compile errors if a query is not updated.
 
 The HttpClient that we use for our HTTP calls to the SoundCloud API also uses a builder pattern to set the path, parameters and headers for the request to be made.
 
