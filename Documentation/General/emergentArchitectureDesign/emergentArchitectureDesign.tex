@@ -103,6 +103,7 @@ The \textit{\$rootScope} will be used to store data such as the selected moods, 
 The Moodcat backend has several subcomponents, each with their own responsibility:
 \begin{itemize}
 \item the \textit{Static File Server} that serves the frontend website on a webserver;
+\item the \textit{SoundCloud integration} which allows for user login and metadata querying.
 \item the \textit{REST API} which is used for communication about rooms and songs between the backend and frontend;
 \item the \textit{Music Matching Algorithm} which is used to generate music suggestions for rooms and to find a room for a user.
 \end{itemize}
@@ -113,12 +114,19 @@ The backend keeps track of which rooms are active and what song is currently pla
 When the backed is started, it creates a room instance for each room in the database.
 For each room instance, the backend keeps track of a current song, a history of previously played songs 
 and a playing queue for future tracks to play.
-The information of a room and its current song can be requested by clients through the API.
+Rooms, songs and chatmessages all have their own models, which are used to represent their
+respective instances that are managed in the backend, and their own entities that are stored in the database.
+Splitting up models, instances and entities allows for flexibility in what data is sent to
+the frontend and what attributes are stored in the database.
+Next to these objects, the REST API uses a nowPlaying model, which is a collection of the time of the song in
+a room and the metadata of the song. This nowPlaying model is used for an API endpoint that is more lightweight
+than the room model, which makes it more suitable for constant polling so that the frontend can verify
+if it's still in sync.
+
 Next to requesting data, the API can process user votes and classifications in order to improve the system.
 When an API call results in the change of an attribute of a room, the room is updated in the database.
 Furthermore, the backend is responsible for transmitting the chat messages between the users in the room.
 An example interaction between the frontend and the backend is given in \ref{fig: backendInteraction}.
-% I am not so happy that we do not mention how we rely on Soundcloud for the streaming here, but I have the feeling it does not really fit here. Suggestions?
 
 \begin{figure}[H]
 \includegraphics[scale=.4]{backendInteraction.png}
@@ -134,6 +142,16 @@ The REST API will be written in Java using JAX-RS and Jackson.
 Jackson serializes Java objects to a JSON string based on their attributes, and vice versa: it is able to deserialize a Java object from a JSON string.
 This allows us to use JSON in the frontend, which is ideal in \Gls{JS}, but use classes and objects in Java, which greatly improves the testability of the responses.
 The backend will be tested with unit tests written using JUnit and Mockito.
+
+\subsubsection{SoundCloud integration}
+Moodcat uses the SoundCloud API for user login, metadata querying and, in the frontend, for streaming.
+To keep track of user's points, progress and stats Moodcat lets their users sign in with their SoundCloud account,
+when users press the login button they are redirected to the SoundCloud login page, which will, on succesfull login,
+provide a SoundCloud user id. This id is used to store and retrieve the statistics of users in our database.
+
+To fill the database with songs we have created a bulkInsert helper program. This will read a list of ids of the 
+most popular tracks on SoundCloud, fetch their metadata through the SoundCloud API, extract the relevant data through the object's entities
+and store those in the database.
 
 \subsubsection{Music matching algorithm}\label{MatchingAlgorithm}
 The music matching algorithm determines and compares moods for songs, rooms and users.
