@@ -236,12 +236,12 @@ Later on, we found out that (while this works well for small datasets,) finding 
 The goal is clear: Find a way for the system to scale further.
 We went over several iterations of the system.
 Once we realised the issue with plain Nearest Neighbours, we went for an ANN\footnote{Approximate nearest neighbour} algorithm to be able to use the nearest neighbour algorithm.
-This initially was planned to be implemented using a KD-Tree \cite{KD-Tree}.
+This initially was planned to be implemented using a \gls{KD-tree}.
 However, this would cause memory issues due to a O(N) space complexity of the algorithm.
 The second suggestion was retrieving a random subset of songs to run the NN algorithm on.
 We ran some calculations, and it looked promising, but it underestimated the locality clustering of the data. 
-We also considered LSH\cite{LSH}, but this is better suited for high-dimension data, and MapReduce, but this wasn't feasible for the amount of time we had.
-In the end, we threw away the original NN implementation we had and use spatial indexing in the database, using RTREE \cite{RTREE}s.
+We also considered \gls{LSH}, but this is better suited for high-dimension data, and MapReduce, but this wasn't feasible for the amount of time we had.
+In the end, we threw away the original NN implementation we had and use spatial indexing in the database, using \gls{R-tree}s.
 
 \section{Design Patterns}
 
