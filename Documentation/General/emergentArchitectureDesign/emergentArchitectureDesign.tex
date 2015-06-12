@@ -149,8 +149,7 @@ To keep track of user's points, progress and stats Moodcat lets their users sign
 when users press the login button they are redirected to the SoundCloud login page, which will, on succesfull login,
 provide a SoundCloud user id. This id is used to store and retrieve the statistics of users in our database.
 
-To fill the database with songs we have created a bulkInsert helper program. This will read a list of ids of the 
-most popular tracks on SoundCloud, fetch their metadata through the SoundCloud API, extract the relevant data through the object's entities
+To fill the database with songs we have created a helper program. By default this program uses a list of the 1000 most popular tracks on SoundCloud. We fetch their metadata through the SoundCloud API, extract the relevant data through the object's entities
 and store those in the database.
 
 \subsubsection{Music matching algorithm}\label{MatchingAlgorithm}
