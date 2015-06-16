@@ -1,2 +1,40 @@
 \chapter{Outlook}
-%the possible improvements in the future and the strategy to achieve these improvements
+During the project, we developed several improvements to the system.
+These improvements could not have been implemented due to time constraints, but the system designed in such a way that support for these features can be easily achieved.
+
+\begin{enumerate}
+\item Our initial selling point was a neural-network based suggestion system.
+We had to drop this sub-system due to lack of initial data, but our current system is able to (over time) provide this data.
+Therefore in the future, the data is available to train the neural network and predict valence and arousal values of a song when it is inserted in the database.
+
+The neural network can extract valence and arousal values based on the features of a song.
+The weights of the nodes in the network will be trained by the existing data in our database, based on the user feedback gathered using the classification SAMs.
+
+\item Currently all room interactions are based on a status-poll structure between the frontend and backend.
+Backend provides NowPlaying and the latest chat messages endpoints which the frontend uses to quickly check their status.
+This unnecessarily stresses the network connection, as most calls don't contain additional information the frontend didn't have yet.
+
+To reduce the network usage, the polling-structure can be replaced with socket events.
+Therefore only when there are updates, packets are sent between the frontend and backend.
+This also makes changes more instant as the clients will immediately get notified, instead of on regular intervals.
+
+\item There are various possible improvements to the user interface.
+
+\begin{enumerate}
+\item At the moment of writing, the room selection page contains a list of rooms.
+This list of rooms is sorted by relevance, but there is no indication on how relevant a certain room is.
+
+Our clients indicated a more suitable representation would be to display the select rooms in a 2D space.
+This space would implicitly represent the inner vector structure used in the backend.
+To indicate the selected moods and the corresponding vector, a point is marked in the space.
+Using this represenation, relevant rooms are placed more closely to the point, whereas less relevant rooms are placed further away. The room selection page can be easily changed to suit this new representation.
+
+\item The vote-up and -down buttons are at the moment placed in the top bar.
+The initial philosophy was that while a song is playing, the user should be able to express his/her feelings.
+Since the currently played song is in the top bar, the natural decision was to place the ote buttons next to it.
+
+After gathering user feedback, one of the outcomes of the tests was that the purposes of the buttons was unknown.
+Some prototypes can be developed with different placements of buttons which can be tested on a set of users.
+Then the users can vote on the most intuitive solution.
+\end{enumerate}
+\end{enumerate}
