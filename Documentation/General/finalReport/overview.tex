@@ -1,1 +1,40 @@
 \chapter{Overview of the developed and implemented software product}
+
+\section{Introduction}
+When entering MoodCat, a user can choose multiple of a list of moods to listen music to. Based on these moods a list of rooms
+sorted on relevance is shown, along with its title and which song is currently playing. When entering a room
+the user can chat with other users that have joined the room.
+
+The software of MoodCat consists of two main components: the Java based backend and the frontend which is a website,
+hosted at \url{http://moodcat.me}.
+
+\section{Frontend}
+The frontend uses Angular.js for managing its objects and connection with the backend and bootstrap
+for the layout and design.
+Angular.js is an MVC framework written in Javascript, next to providing a nice way to split
+and integrate with models, views and controllers, it also simplifies managing and updating displayed data.
+Angular reads HTML pages that contain custom tag attributes. The attributes are interpreted by angular, and
+replaced with actual data from the model.
+The model is in turn updated through constant interval based polling of the backend, which is made possible by the REST API from the backend
+and angular's capability of parsing it. When the time of the application is too much out of sync with the backend,
+the frontend will know and can correct it. When a song has finished the frontend will retrieve the metadata of the new song in the room, the model
+will change and the displayed page is updated accordingly, no need to load a new page.
+
+\section{Backend}
+The backend is responsible for managing the underlying structure of the project, to
+connect loosely coupled with the frontend and to persist and retrieve data from our database.
+The backend connects through hibernate to a postgres database running on a server which is also hosted on \url{http://moodcat.me}, next to an Nginx server for the
+frontend and the backend running as Java application. The database contains metadata of songs, artists, rooms and users. When the
+backend is started, it connects with the database and retrieves the current rooms. The REST API is then initialized, which then
+handles calls at \url{http://moodcat.me/api/}, a typical API call would be a GET request to \url{http://moodcat.me/api/rooms/} to obtain the currently
+active rooms.
+The backend contains models, of which the fields are sent through the API as generated JSON, instances, which contain not only metadata but also
+dynamically changing fields like the current time of songs, and entities, which are direct representations of the entries in the database.
+Instances can be created through entities, and models use instances to populate their fields.
+
+\section{Mapping moods}
+For comparing rooms, moods and songs we use valence arousal vectors. Every mood can be mapped by a 2 dimensional vector of valence and arousal,
+both of which have values between -1 and 1. Each room has its own vector which is used to determine which room to suggest based on
+the selection of moods. When rooms need new songs, the backend will seek new songs that have vectors close to the room's vector, this is done
+through R-Trees.
+The songs are mapped to moods through a user feedback system.
