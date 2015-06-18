@@ -1,1 +1,107 @@
 \chapter{Reflection on the product and process from a software engineering perspective}
+In this chapter, we discuss the software engineering perspectives of MoodCat. First, we discuss our developing process. Second, we discuss the general structure and architecture of the product. Then we dive a bit deeper into the design paterns we use and considered. We also touch on code readability and maintainability, and the choices we made there. Finally, we list our most important libraries and languages used.
+
+\section{Product Architecture}
+The basic model of MoodCat's architecture is the same as just about every other website.
+We're using a client-server architecture.
+We actually do this in the form of an AngularJS web application and a Java API based on JAX-RS\footnote{The implementation we use is RestEASY, which can be found on \url{http://resteasy.jboss.org/}}. 
+The API in turn talks to a persistence server in the form of a PostgreSQL database.
+
+\section{Design Patterns}
+A lot of the design patterns in our application come from the libraries and frameworks we use. However, we did design our backend system very methodically, using the model-view-controller (MVC) pattern. The API classes define the view of the application, in the form of JSON responses, which is what our frontend uses to get it's data. The "backend" package is what defines the controller of the system, and the DAO's (Data Access Object) define our models. They talk to the postgreSQL database for retrieval and persistence.
+
+In the frontend we use a slightly different structure, most commonly referred to MVVM (Model, View, ViewModel). The models here are the API calls, controllers and services are the viewmodels, and the HTML templates are the views.
+
+A few of the design patterns we used:
+\begin{enumerate}
+\item facade
+\item proxy
+\item singleton
+\item factories
+\item Dependency injection
+\item MVC
+\item MVVM
+\item Resource pool
+\end{enumerate}
+
+\section{Code readability / maintainability}
+One of our goals in this project was creating a readable and maintainable codebase.
+In the very first week, Jan-Willem proposed the use of Project Lombok.
+This is quite a controversial project, as it intercepts the code on compile time, and then injects getters, setters, and hashcode/equals methods.
+These are not in the source files at all, and with the proper IDE plugin we still have autocomplete.
+The result of all this is a source file without a lot of boilerplate methods.
+This is way easier to read and understand.
+This speeds up both development and learning the codebase.
+
+Furthermore, we've set on creating the API in a way such that a small change in backend code doesn't have to affect frontend. Adding a field to an object for example, is something that may introduce a bug in a clientside application. 
+
+\section{SCRUM}
+We worked with SCRUM for the first time during this project.
+Agile methodologies were known to some of us before this project, but no one had really used it consistently.
+We did some research and found a really nice guide from Atlassian\footnote{https://www.atlassian.com/agile}.
+From this, we learned about the roles of SCRUM, the difference between the SCRUM Master and the Product Owner, and how to arrange meetings.
+A clear plan was set: We were to have daily SCRUM meetings at 09.00 o'clock every morning.
+In this meeting, we would take our Waffle\footnote{http://waffle.io} board, and each member of the group had to answer 4 questions:
+\begin{enumerate}
+\item What have you done yesterday?
+\item What are you going to do today?
+\item Are you on schedule?
+\item Do you need help on anything?
+\end{enumerate}
+This went surprisingly well!
+In our first sprint we had a little trouble guessing how long an issue would take, but after that, we set story points on waffle.io, where 1 story point = 2 hours of work.
+SCRUM meetings were useful to keep an overview of the system, as well as help others out when they were stuck.
+We did continue past 15 minutes a few times, but usually with a smaller group for a specific issue.
+Overall, we're all convinced SCRUM is a great way to develop software, on the condition that a sprint takes 2 or 3 weeks instead of one.
+A single week is very short, because the sprint planning and sprint reflection took up a considerable amount of time in the sprint, and the weekly demo forced us to put a difficult issue aside more than once.
+
+\section{Use of libaries and languages}
+We have used quite a lot of languages and libraries.
+To get a clear view of what belongs where, we split the system in our three components.
+
+\subsection{Frontend}
+The frontend for Moodcat is the website loaded into the user's browser.
+
+\subsubsection{Languages}
+To create a website, we use quite standard web languages.
+HTML for the DOM creation, javascript for client-side logic, DOM manipulation and communication with the backend API, and CSS for styling.
+
+\subsubsection{Libraries}
+Everything we do on the frontend, we could do in vanilla javascript (without libraries).
+However, this would take extremely long, due to the complexity of the required code.
+To solve this problem, we decided to use AngularJS.
+This is a framework built upon javascript, and it deals exceptionally well with DOM updates (with 2-way data binding) and HTTP calls.
+It also enables re-usable code with directives, a mechanism to create an on the fly webcomponent.
+We actually extend AngularJS further with packages to suit our specific needs, these dependencies can be found in the Frontend repo, in the bower.json file.\\
+
+For CSS we use SASS, a CSS preprocessor that eases the re-use of CSS rules and markup.
+
+\subsection{Backend}
+
+\subsubsection{Languages}
+In the backend, we use Java.
+We've chosen Java because everyone in our team can write good, clean Java code.
+It's also very easy to add libraries to Java to ease the task at hand. 
+
+\subsubsection{Libraries}
+In fact, we've used quite a few libraries.\\
+To turn the application into a servlet so we can use it on the web we use Jetty.
+For the RESTful API connection with the website we use RestEASY, a library that implements JAX-RS.
+Part of JAX-RS is a dependency injection module, but it's very basic.
+We wanted a more complete dependency injection package, so we tied Guice into RestEASY, together with Guice JPA for transaction support and Guice assisted inject for factories.
+
+For the database side of things we're using Hibernate for ORM (Object-relational mapping).
+This allows us to transparently "store" Java objects in the database.
+Tables are generated to suit the object fields.
+To query the database we're using QueryDSL, so we can build queries using a Builder pattern.
+
+To replace our initial plans of a Neural Network, we're using rtrees, which are spatial indices for objects.
+To get support for that in our application, we're using Hibernate Spatial.
+
+For development, we're using two more major dependencies.
+To simulate a postgres database during testing we're using H2 (with Hatbox for spatial query support).
+Besides that, we're using Project Lombok for automatic generation of getters, setters and hashcode and equals methods.
+
+\subsection{Persistence}
+In the persistence layer, we're using postgreSQL as the database, with postgre Spatial as a plugin for spatial support.
+
