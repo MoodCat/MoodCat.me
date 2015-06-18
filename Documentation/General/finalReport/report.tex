@@ -1,0 +1,68 @@
+\documentclass{tudelft-report}
+%\usepackage[T1]{fontenc}  %I get error while running, but they are gonna after commenting this out.
+\let\cleardoublepage\clearpage %let the clear page disapear.
+\usepackage{float}
+
+\usepackage{xparse,environ,xspace}
+
+\ExplSyntaxOn
+\NewEnviron{commalist}[1][\space]{\spence_comma_list:V \BODY #1}
+\seq_new:N \l_spence_items_seq
+\cs_new_protected:Npn \spence_comma_list:n #1
+ {
+  \seq_set_split:Nnn \l_spence_items_seq { \item } { #1 }
+  \seq_pop_left:NN \l_spence_items_seq \l_tmpa_tl % we have an empty element at the beginning
+  \seq_use:Nnnn \l_spence_items_seq { ~ and ~ } { , ~ } { , ~ and ~ }
+ }
+\cs_generate_variant:Nn \spence_comma_list:n { V }
+\ExplSyntaxOff
+
+
+\newcommand{\class}[1]{\textcolor{blue}{\bf #1}} 
+
+\input{glossary}
+\begin{document}
+
+%% Use Roman numerals for the page numbers of the title pages and table of
+%% contents.
+\frontmatter
+	
+\title[For MoodCat]{Final Report}
+\author{\small Eva Anker (eanker 4311426)\\
+		Gijs Weterings (gweterings 4272587)\\
+		Jaap Heijligers (jheijligers 4288130)\\
+		Jan-Willem Gmelig Meyling (jgmeligmyling 4305167)\\
+		Tim van der Lippe (tvanderlippe 4289439)}
+\affiliation{Technische Universiteit Delft}
+\coverimage{cover.png}
+\makecover
+
+%% Include an optional title page.
+\input{title}
+
+\tableofcontents
+
+%\input{preface}
+
+
+%% Use Arabic numerals for the page numbers of the chapters.
+\mainmatter
+\input{preface}
+\input{introduction}
+\input{overview}
+\input{reflection}
+\input{Description}
+\input{InteractionDesign}
+\input{evaluation}
+\input{outlook}
+
+%% Use letters for the chapter numbers of the appendices.
+\appendix
+
+%\input{appendix-a}
+
+\printglossary
+\bibliography{report}
+
+\end{document}
+
