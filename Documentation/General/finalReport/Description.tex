@@ -1,44 +1,41 @@
 \chapter{Description of the developed functionalities}
 
-\section{Introduction}
 In this section we will discuss the main functionalities of our system.
 MoodCat can be split up into three main features.
 These functionalities are the ability to play music, chatting in the rooms and classifying a song.
 They will be described in the sections below.
 But before explaining that, we will give a small overview of the structure of the system.
 
-%Is this needed?
-\section{Small overview}
-When a user enters the website he selects one or more moods he is in. 
+\section{Introduction to MoodCat}
+When a user enters the website he selects one or more moods. 
 Then a list of rooms fitting that selection of moods will appear.
-When clicking on a room a user joins a room where he can listen and chat with other people in the room.
-A user can say if the song is appropriate for a song. If the song is not appropriate the user gets a small pop-up on screen to tell how the song should be rated.
+When clicking on a room a user joins, and he can listen and chat with other people in the room.
+A user can vote if the song is appropriate for a song. If the song is not appropriate the user gets a small pop-up on screen to tell how the song should be rated.
 \\
-MoodCat also has a game where a user gets non-rated songs and gets to classify while listening to a maximum 30 seconds snippets of songs.
+MoodCat also has a gamification aspect where a user is served with songs not yet classified. The user then gets a snippet of the song (30 seconds tops) and is then asked for a rating.
 
-
-\section{Music playing}
+\section{Listening to music}
 MoodCat is developed as a music application and thus the ability to play music is very important.
 Although, our music player is a bit different from a normal music player.
-MoodCat is a streaming service, because of that the music is synchronized with the room the player is in.  
-So you can only mute the sound and then the music will keep playing, only with no sound.
-When the internet connection of the user gets down for a few seconds or the connection is slow, when reconnection the music starts again at the moment where the whole room is.\\
-Thus, the music playing functionality of MoodCat can be seen as a radio station.
+MoodCat works as a streaming service, and because of that the music is synchronized with the room the player is in.  
+So you can only mute the sound, not alter its progression.
+When the internet connection of the user goes down for a few seconds or the connection is slow, the music synchronises with the room as soon as possible.\\
+In fact, a room in MoodCat can be compared to a radio station.
 
 \section{Chatting}
 In Moodcat you can chat with other people in the room.
-In order to sent a message the user needs to be logged in, there is no need for creating an account.
-Users can login with their SoundCloud account.\\
-When a user is logged in the user can chat with typing a message in the "Type a message" bar and clicking enter or pushing the "send" button.
-The user sees the messages from other users, with the timestamp and their name.
+In order to send a message the user needs to be logged in using their soundcloud account.
+\\
+When a user is logged in, he can chat by typing a message in the "Type a message" bar.
+The user sees the messages from other users, accompanied by their usernames.
 The name of a user is the name a user has set in SoundCloud as their real name.
 
 \section{Classifying}
-As earlier described when a user disagrees with the classification of a song, the user can give it own classification.
-This is done with valence and arousal, which are psychological terms to express to break down the mood of a user.
+As earlier described, when a user disagrees with the classification of a song, the user can give his own classification.
+This is done with valence and arousal, which are terms to express the mood of a user.
 To classify a user gets different buttons, with an image of state. Theses images are designed in such a way that it only can be seen as one state.
 When a user plays the classifying game the user classifies the snippets with the same buttons as the normal classification.\\
-The classification effects how the song is classified as a mood. When a song is downvoted by a lot of people in the room, the song is not played in that room any more. It also can be played in a new room, according to the new classification of the song. This makes the music the user gets better at every classification that is submitted. \\
+The classification effects how the song is classified as a mood. When a song is downvoted by a lot of people in the room, the song is not played in that room any more. It can also be played in a new room, according to the new classification of the song. This makes the music the user gets better at every classification that is submitted. \\
 When a user classifies, the user earns points. The scores can be found on the leaderboard. 
-For classifying an unrated song a user gets more points then normal classification.   
-This is done to simulate the user to classify more songs and thus make the selection of songs MoodCat can use bigger.
+For classifying an unrated song a user gets more points than a normal classification.   
+This is done to stimulate the user to classify more songs, and thus grow MoodCat's collection.
