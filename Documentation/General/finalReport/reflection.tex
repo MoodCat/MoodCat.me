@@ -14,30 +14,30 @@ In the frontend we use a slightly different structure, most commonly referred to
 
 A few of the design patterns we used:
 \begin{enumerate}
-\item facade
-\item proxy
-\item singleton
-\item factories
-\item Dependency injection
+\item Facade
+\item Proxy
+\item Singleton
+\item Factories
+\item Dependency Injection
 \item MVC
 \item MVVM
 \item Resource pool
 \end{enumerate}
 
 \section{Code readability / maintainability}
-One of our goals in this project was creating a readable and maintainable codebase.
-In the very first week, Jan-Willem proposed the use of Project Lombok.
-This is quite a controversial project, as it intercepts the code on compile time, and then injects getters, setters, and hashcode/equals methods.
-These are not in the source files at all, and with the proper IDE plugin we still have autocomplete.
-The result of all this is a source file without a lot of boilerplate methods.
-This is way easier to read and understand.
-This speeds up both development and learning the codebase.
+In our efforts to create a codebase that not only fit our needs, but is readable and maintainable by others as well, we valued clean, short code greatly. Methods are as small as possible, fill only one purpose and have descriptive names. 
 
-Furthermore, we've set on creating the API in a way such that a small change in backend code doesn't have to affect frontend. Adding a field to an object for example, is something that may introduce a bug in a clientside application. 
+We used the new technologies in Java 8 to it's full potential, substituting for loops and (nested) if statements for lambdas and anonymous classes wherever applicable.
+
+Communication with the database is something you want to do right, so instead of sending strings with SQL statements to the database, we built SQL commands with QueryDSL, which implements the builder pattern to create readable strings. Added benefit was the type checking capability of this pattern, decreasing the risk of a poorly written statement to mess with data too much.
+
+Google Guice allowed us to build our application like LEGO: composition at its best. Guice is a Dependency Injection framework, which allows for looser coupling between classes. Responsibilities are split better and rapid prototyping is possible without having to pass dependencies around in the project.
+
+Lastly, our very architecture in the backend allows for much greater maintainability. Due to the MVC-like structure, with different layers of objects, small changes to these objects were possible without breaking the API contract with the frontend and/or without breaking the database schema. 
 
 \section{SCRUM}
-We worked with SCRUM for the first time during this project.
-Agile methodologies were known to some of us before this project, but no one had really used it consistently.
+We worked with the SCRUM-methodology for the second time.
+Agile methodologies were known to some of us before this project, but no one had really used it consistently, aside from the basics of SCRUM during the SEM course.
 We did some research and found a really nice guide from Atlassian\footnote{https://www.atlassian.com/agile}.
 From this, we learned about the roles of SCRUM, the difference between the SCRUM Master and the Product Owner, and how to arrange meetings.
 A clear plan was set: We were to have daily SCRUM meetings at 09.00 o'clock every morning.
@@ -101,7 +101,3 @@ To get support for that in our application, we're using Hibernate Spatial.
 For development, we're using two more major dependencies.
 To simulate a postgres database during testing we're using H2 (with Hatbox for spatial query support).
 Besides that, we're using Project Lombok for automatic generation of getters, setters and hashcode and equals methods.
-
-\subsection{Persistence}
-In the persistence layer, we're using postgreSQL as the database, with postgre Spatial as a plugin for spatial support.
-
