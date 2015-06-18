@@ -7,7 +7,7 @@ For the backend we can distinguish the persistence layer, the backend layer and 
 The frontend can be considered a module on itself.
 We will now describe how we reflect on the implementation of these modules.
 
-One of the more controversial choices in our project is undoubtedly the relatively heavy usage of software dependencies and generated code.
+One of the more controversial choices in our project is undoubtedly the relatively heavy usage of software dependencies and generated code (see section \ref{sec:product-achitecture}).
 The downside of this approach is that we all had to learn and adapt to the various libaries and frameworks.
 On the other hand, however, the used libaries and frameworks really set the bar on code quality and kickstarted our project.
 We would defenitely use JAX-RS, AngularJS and Hibernate again if we had to write a web system for future projects and we are glad that we took this project as the opportunity to work with these tools.
@@ -23,12 +23,14 @@ For the web interface there is still some room for improvement.
 Most importantly the unclear positioning of various elements and the lack of descriptive headers made some parts of the website not so intuitive.
 The only real failure we encountered in the UI layer was that the two ways of listening to music (the classification game and the room listening) had quite some conflicting logic which had to be dealt with.
 Because we designed these views / features separately, we did not plan out how transitions between the two modes would be handled well enough.
-This caused some bugs that had to resolved later on and the implementation of these fixes can still be improved using, for example - a state pattern.
+This caused some bugs that had to resolved later on and the implementation of these fixes can still be improved using, for example, a state pattern.
 
 Aside from these two failures, we we are really happy overall about the product we have built in the past few weeks.
 First of all, the product we have built is in a deployable state and almost all feedback from our current user group was positive.
 Secondly, we have managed to realize almost all must have requirements, and missed just one should have requirement.
 This of course besides the neural network, which we unfortunately had to drop in the development process.
-We however do think that the neural network that we designed would work in practice and that it would be a huge improvement both to the functioning and user experience of the system.%TODODODO insert the actual references
+We however do think that the neural network that we designed would work in practice and that it would be a huge improvement both to the functioning and user experience of the system.
+We will further elaborate on this in the section \nameref{outlook-neural}.
+
 Without the neural network, the system is suffering from a cold start problem.
-Thi will be solved over time through processing user input.
+This will be solved over time through processing user input.

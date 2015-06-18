@@ -3,12 +3,13 @@ During the project, we developed several improvements to the system.
 These improvements could not have been implemented due to time constraints, but the system designed in such a way that support for these features can be easily achieved.
 
 %\begin{enumerate}
+\label{outlook-neural}
 \subsubsection{Song and room suggesstions}
 Our initial selling point was a neural-network based suggestion system.
 A neural-network is a system that can classify items based on features and output in one (or few) dimensions.
 In order to train a neural-network, you also need pre-determined labels/expected values for the dimensions.
 In our case, the neural-network should output \gls{valence} and \gls{arousal}.
-However, the data provided by EEMCS did not contain those values.
+However, existing datasets did not contain those values.
 How to obtain the valence and arousal of song-features is currently researched by various universities, but no method has been succesful yet.
 Therefore we were unable to train and use our network.
 
