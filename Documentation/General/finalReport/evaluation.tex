@@ -1,1 +1,27 @@
-\chapter{Evaluation of the functional modules and the product in its entirety, including the failure analysis}
+% Evaluation of the functional modules and the product in its entirety, including the failure analysis
+
+\chapter{Evaluation of the functional modules and product}
+
+Moodcat is roughly developed in four modules.
+For the backend we can distinguish the persistence layer, the backend layer and the API presentation layer.
+The frondend can be considered a module on itself.
+In the following paragraphs we will describe how we reflect on the implementation of these modules.
+
+One of the more controversial choices in our project undoubtedly is the relatively heavy usage of software dependencies and generated code.
+The downside of this approach is that we all had to learn and adapt to the used libaries and frameworks.
+On the other hand, however, the used libaries and frameworks really pointed us to the right direction and kickstarted our project.
+We would defenitely use JAX-RS, AngularJS and Hibernate again if we had to write a web system for future projects, and we are glad that we took this project as the opportunity to work with these tools.
+
+
+If we would have to pinpoint two failures in the development process, we can list two major design problems. One failure was that we did not correctly understood our ORM framework (Hibernate) well enough which leaded to quite some bugs which involved low level debugging in the framework.
+Eventually we got it fixed but it took relatively much time. Most of the troubles were caused because we wanted to synchronize the latest chat messages in the database so that another server would be able to take over in case of a failure, but in the end we can debate if this was such a good idea to implement something such complex for something that is a "nice to have".
+
+For the web interface there is room for improvement for mostly the unclear positioning of various elements, and the lack of descriptive headers where something might not be so clear to a new user.
+The only real failure we experienced in the UI layer was that the two modes (classification game and the room listening) have quite some conflicting logic.
+Because we designed these views / features separately, we did not think enough how transitions between the two modes would be handled. This caused quite some bugs that had to resolved later on, and the implementation of these fixes can still be improved using, for example - a state pattern.
+
+Overall we are really happy about the product we have built in the past few weeks.
+First of all, the product we have built is in a deployable state, and the received input from the current user group has been very enthusiastic.
+Secondly, we have managed to realize almost all must have and should have requirements. This of course besides the neural network, which we unfortunately had to drop in the development process.
+We however do think that the neural network that we designed would work in practise and that it would be a huge improvement both to the functioning and user experience of the system.%TODODODO insert the actual references
+Without the neural network, the system is suffering from a cold start problem, which over time will be solved through user input which also forms a dataset to train a future neural network with.
