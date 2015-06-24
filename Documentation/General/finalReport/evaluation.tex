@@ -7,11 +7,13 @@ For the backend we can distinguish the persistence layer, the backend layer and 
 The frontend can be considered a module on itself.
 We will now describe how we reflect on the implementation of these modules.
 
+\subsection{Software Dependencies}
 One of the more controversial choices in our project is undoubtedly the relatively heavy usage of software dependencies and generated code (see section \ref{sec:product-achitecture}).
 The downside of this approach is that we all had to learn and adapt to the various libaries and frameworks.
 On the other hand, however, the used libaries and frameworks really set the bar on code quality and kickstarted our project.
 We would defenitely use JAX-RS, AngularJS and Hibernate again if we had to write a web system for future projects and we are glad that we took this project as the opportunity to work with these tools.
 
+\subsection{Project problems}
 If we would have to pinpoint two failures in the development process, we can list two design problems.
 One failure was that we did not know our ORM framework (Hibernate) well enough.
 This led to quite some bugs which involved low level debugging in the framework.
@@ -25,6 +27,7 @@ The only real failure we encountered in the UI layer was that the two ways of li
 Because we designed these views / features separately, we did not plan out how transitions between the two modes would be handled well enough.
 This caused some bugs that had to resolved later on and the implementation of these fixes can still be improved using, for example, a state pattern.
 
+\subsection{Reflection}
 Aside from these two failures, we we are really happy overall about the product we have built in the past few weeks.
 First of all, the product we have built is in a deployable state and almost all feedback from our current user group was positive.
 Secondly, we have managed to realize almost all must have requirements, and missed just one should have requirement.
