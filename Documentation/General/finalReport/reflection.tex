@@ -77,6 +77,47 @@ We did continue past 15 minutes a few times, but usually with a smaller group fo
 Overall, we're all convinced SCRUM is a great way to develop software, however we think that a sprint could better last 2 or 3 weeks instead of one.
 The sprint planning and sprint reflection took up a considerable amount of time in the sprint and the weekly demo forced us to put a difficult issue aside more than once.
 
+\section{Pull-based development and code reviews}
+% Most of us had no experience with pull-based development prior to this project.
+We extensively used this methodology to control our Git usage.
+We used the following procedure:
+
+\begin{itemize}
+\item After we have discussed and defined a new feature, bug or enhancement, a ticked will be created and the assigned team member will write the code, possibly in pair with another team member (pair programming).
+This code will then be pushed to a branch on the remote repository.
+
+\item The team member opens a pull request (PR). 
+This is a formal request to merge the branch into another different branch, usually the master branch.
+
+\item Other team members review the code in a static and a dynamic fashion.
+They look for errors, improvements or discussion points. 
+Additionally, the Continuous Integration (CI) server builds the branch to make sure the code compiles and all tests are pass.
+
+\item The assigned team member responds to the feedback.
+The team member can explain the reasoning behind the code contributions and process the feedback by altering the code.
+
+\item The PR is accepted once all feedback has been processed and the code changes are approved.
+\end{itemize}
+
+\subsection{Reflection on the pull-based development}
+Overall we are pleased with how we were able to use pull requests.
+One very trivial advantage of reviewing changes to the code, is that you ensure that the code is readable.
+If another teammember is unable to read the code, the code has to be refactored.
+This way the system becomes more maintainable.
+
+\par
+Another benefit came a bit more to a surprise to us.
+Throughout the project we used many techniques and libaries that were new to us (see \ref{reflection-libaries}).
+The pull-based development enabled us to discuss the usage of the framework.
+Therefore we really learned a lot from reading and reviewing each others code,  prevented \textit{wrong}\footnote{With \textit{wrong} usage of the framework we mean not adhering to the public API of the framework, introducing a libary very similar to an existing one, or writing something manually that is already part of the framework.} usage of the used frameworks, and ensured that we were still holding to our software architecture.
+
+\par
+In the beginning we did not schedule time for the reviewing process of the pull-requests.
+The pull-requests piled up till we hastily reviewed and merged them at the end of the iteration.
+This caused unnecessary problems with merging, as there were quite some conflicting line changes.
+Therefore we decided to integrate the reviewing and merging more into the sprints, which worked out really well.
+
+\label{reflection-libaries}
 \section{Use of libaries and languages}
 We have used quite a lot of languages and libraries.
 To get a clear view of what belongs where, we split the system in our three components.
