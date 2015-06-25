@@ -1,29 +1,28 @@
 \chapter{Reflection on the product and process from a software engineering perspective}
-In this chapter, we discuss the software engineering perspectives of MoodCat.
-First, we discuss our developing process.
+In this chapter we discuss the software engineering perspectives of MoodCat.
+First we discuss our developing process.
 Secondly, the general structure and architecture of the product is explained.
-Then we will take a closer look at the used and implemented design paterns.
-After that we will elaborate the choices to increase code readability and maintainability.
+Then we will take a closer look at the used design patterns.
+After that we will elaborate on the choices to increase code readability and maintainability.
 Finally, the most important libraries and languages we used will be listed.
 
 \label{sec:product-architecture}
 \section{Product Architecture}
-The architecture of MoodCat is very similar compared to existing websites.
-We're using a client-server architecture.
-The frontend (client) is a \gls{angularjs} web application, whereas the backend (server) is a Java API based on JAX-RS\footnote{The implementation we use is RestEASY, which can be found on \url{http://resteasy.jboss.org/}}. 
-The backend communicates with a persistence server in the form of a PostgreSQL database.
+The architecture of MoodCat is very similar compared to existing websites, we use a client-server architecture.
+The frontend (client) is a \gls{angularjs} web application, whereas the backend (server) is a Java \gls{REST} API based on \gls{JAXRS}\footnote{The implementation we use is RestEASY, which can be found on \url{http://resteasy.jboss.org/}}. 
+The backend has a persistence layer that interactes with a \gls{Postgres} database.
 
 \section{Design Patterns}
 Due to the usage of various libraries and frameworks, we use quite some design patterns.
-Additionally, we did design our backend system very methodically, using the model-view-controller (MVC) pattern.
-The API classes define the view of the application (in the form of JSON responses) which is fetched by the frontend to be used by the client.
-The "backend" package contains the controllers of the system.
-The entities in the "database" package define our models.
+Additionally we did design our backend system very methodically, using the model-view-controller (\gls{MVC}) pattern.
+The API classes define the view of the application (in the form of \gls{JSON} responses) which is fetched by the frontend to be used by the client.
+The backend package contains the controllers of the system.
+The entities in the database package define our models.
 
-In the frontend we use a slightly different structure, most commonly referred to MVVM (Model, View, ViewModel).
+In the frontend we use a slightly different structure, most commonly referred to \gls{MVVM} (Model, View, ViewModel).
 The API calls are the models obtaining the data.
 The controllers and services are the viewmodels, which not only show but also alter the content.
-And lastly the HTML templates are the views showing the website to the user.
+And lastly the \gls{HTML} templates are the views showing the website to the user.
 
 A few of the design patterns we used are:
 \begin{commalist}
@@ -31,29 +30,29 @@ A few of the design patterns we used are:
 \item Proxies
 \item Singletons
 \item Factories
-\item Dependency Injection
-\item MVC
-\item MVVM
+\item \gls{DI}
+\item \gls{MVC}
+\item \gls{MVVM}
 \item resource pooling
 \end{commalist}.
 
 \section{Code readability / maintainability}
 In our efforts to create a codebase that not only fit our needs, but is readable and maintainable by others as well, we valued clean, short code greatly.
-Methods are kept short and simple, fill only one purpose and have descriptive names. 
+Methods are kept short and simple, fill only one purpose, and have descriptive names. 
 
-We used the new technologies in Java 8 to it's full potential, substituting for loops and (nested) if statements for lambdas and anonymous classes wherever applicable.
+We used the new technologies in Java 8 to it's full potential, substituting for loops and (nested) if statements with lambdas and anonymous classes wherever applicable.
 
 In order to ease the communication with the database, we build the SQL commands using QueryDSL, which implements the builder pattern.
 Added benefit was the type checking capability of this pattern, decreasing the risk of writing incorrect queries and making sure when making updates to entities, queries remain correct.
 
-Google Guice allowed us to build our application like LEGO\texttrademark : composition at its best.
-Guice is a Dependency Injection framework which allows looser coupling between classes and packages.
+\textbf{Google Guice} allowed us to build our application like LEGO\texttrademark : composition at its best.
+\textbf{Guice} is a \Gls{DI} framework which allows looser coupling between classes and packages.
 Responsibilities are split better and rapid prototyping is possible without having to worry how to pass dependencies around in the project.
 
-Lastly, the MVC-structure enabled us to change inner workings of the backend without breaking the API contract with the frontend and/or without breaking the database schema.
+Lastly the MVC-structure enabled us to change inner workings of the backend without breaking the API contract with the frontend and/or without breaking the database schema.
 
 \section{SCRUM}
-We worked with the SCRUM-methodology for the second time.
+We worked with the \textbf{SCRUM-methodology}.
 Agile methodologies were known to most of us before this project, but no one had really used it consistently, aside from the basics of SCRUM during the SEM course.
 We did some research and found a really nice guide from Atlassian\footnote{https://www.atlassian.com/agile}.
 We learned about the different roles of SCRUM: the SCRUM Master, the Product Owner and the development team, as well as how to manage meetings in a proper manner.
@@ -71,14 +70,13 @@ In our first sprint we had a little trouble guessing how long an issue would tak
 We discovered quickly in the following sprints that story points in Waffle helped us managing tickets and sprints.
 We decided that 1 story point equals 2 hours of work.
 
-SCRUM meetings were useful to keep an overview of the system, as well as help others out when they were stuck.
+\textbf{SCRUM} meetings were useful to keep an overview of the system, as well as help others out when they were stuck.
 We did continue past 15 minutes a few times, but usually with a smaller group for a specific issue.
 
-Overall, we're all convinced SCRUM is a great way to develop software, however we think that a sprint could better last 2 or 3 weeks instead of one.
+Overall, we are all convinced \textbf{SCRUM} is a great way to develop software, however we think that a sprint could better last two or three weeks instead of one.
 The sprint planning and sprint reflection took up a considerable amount of time in the sprint and the weekly demo forced us to put a difficult issue aside more than once.
 
 \section{Pull-based development and code reviews}
-% Most of us had no experience with pull-based development prior to this project.
 We extensively used this methodology to control our Git usage.
 We used the following procedure:
 
@@ -91,10 +89,10 @@ This is a formal request to merge the branch into another different branch, usua
 
 \item Other team members review the code in a static and a dynamic fashion.
 They look for errors, improvements or discussion points. 
-Additionally, the Continuous Integration (CI) server builds the branch to make sure the code compiles and all tests are pass.
+Additionally, the Continuous Integration (CI) server builds the branch to make sure the code compiles and all tests pass.
 
 \item The assigned team member responds to the feedback.
-The team member can explain the reasoning behind the code contributions and process the feedback by altering the code.
+The team member should explain the reasoning behind the code contributions and process the feedback.
 
 \item The PR is accepted once all feedback has been processed and the code changes are approved.
 \end{itemize}
@@ -117,8 +115,8 @@ The pull-requests piled up till we hastily reviewed and merged them at the end o
 This caused unnecessary problems with merging, as there were quite some conflicting line changes.
 Therefore we decided to integrate the reviewing and merging more into the sprints, which worked out really well.
 
-\label{reflection-libaries}
 \section{Use of libaries and languages}
+\label{reflection-libaries}
 We have used quite a lot of languages and libraries.
 To get a clear view of what belongs where, we split the system in our three components.
 
@@ -126,37 +124,35 @@ To get a clear view of what belongs where, we split the system in our three comp
 The frontend for Moodcat is the website loaded into the user's browser.
 
 \subsubsection{Languages}
-To create a website, we use the standard web languages.
-HTML for the DOM creation, javascript for client-side logic, DOM manipulation and communication with the backend API and CSS for styling.
+To create a website, we use the standard web languages: \gls{HTML} for markup and\gls{JS} for client-side logic, DOM manipulation and communication with the backend API, and \gls{CSS} for styling.
 
 \subsubsection{Libraries}
 We decided to use \gls{angularjs} to increase the productivity of developing features on the frontend.
-This is a framework built upon javascript and it deals exceptionally well with DOM updates (with 2-way data binding) and HTTP calls.
+This is a framework built upon \gls{JS} and it deals exceptionally well with DOM updates (with 2-way \gls{data-binding}) and \gls{HTTP} calls.
 It also enables re-usable code with directives, a mechanism to create an on the fly webcomponent.
 We actually extend \gls{angularjs} further with packages to suit our specific needs.
 
-In order to generate CSS, we use preprocessor called SASS that eases the re-use of CSS rules and markup.
+In order to generate \gls{CSS}, we use preprocessor called \textbf{SASS} that eases the re-use, inheritance and nesting of rules.
 
 \subsection{Backend}
 
 \subsubsection{Languages}
 The backend is written in Java.
-We've chosen Java because everyone in the team was most experienced in this language.
+We have chosen Java because everyone in the team is the most experienced in this language.
 
 \subsubsection{Libraries}
-To turn the application into a servlet and process HTTP requests, we use Jetty.
-The RESTful API is implemented using RestEASY, a library that implements the interfaces defined by JAX-RS.
-JAX-RS has a dependency injection module to ease the process of defining end-points.
+To turn the application into a servlet and process \gls{HTTP} requests, we use Jetty.
+The RESTful API is implemented using RestEASY, a library that implements the interfaces defined by \gls{JAXRS}.
+\gls{JAXRS} has a \gls{DI} module to ease the process of defining end-points.
 However, we also wanted a more complete dependency injection framework.
-Therefore we decided to use Guice for constructor injection, together with Guice-JPA for transaction support and Guice- assisted-inject for factories.
+Therefore we decided to use \textbf{Guice} for constructor injection, together with \textbf{Guice-JPA} for transaction support and \textbf{Guice assisted-inject} for factories.
 
-We're using Hibernate for ORM (Object-relational mapping).
-This allows us to transparently "store" Java objects in the database.
+We're using \gls{Hibernate} for \gls{ORM} (Object-relational mapping).
+This allows us to transparently store Java objects in the database.
 Tables are generated according to the fields defined in the entities.
 
 In order to quickly select songs or rooms from the database, based on their vector, we use a \gls{rtree} spatial index.
-In order to enable  \glspl{rtree} in our database and backend, we use Hibernate Spatial.
+In order to enable  \glspl{rtree} in our database and backend, we use \gls{hibernate-spatial}.
 
-In order to ease the development process, we use two more dependencies:
-To simulate a postgres database during testing, we're using H2 (with Hatbox for spatial query support).
-Besides that, we're using Project Lombok for automatic generation of getters, setters, hashcode and equals methods.
+In order to ease the development process, we use the \gls{H2} database with the \gls{GeoDB} spatial query extension for testing and development, so we do not need additional \gls{Postgres} instances.
+Besides that, we're using Project Lombok for automatic generation of general methods.
