@@ -1,0 +1,41 @@
+\chapter{Neural Networks}
+
+One of the bigger issues we had to deal with in MoodCat was to classify songs
+to moods. The initial plan was to create a neural network that could do this.
+
+Some of the MoodCat team members have followed a course about computational intelligence,
+in which different ways to use learning algorithms to solve different kinds of problems.
+One widely used technique to classify objects by using the objects' features as inputs
+is the use of neural networks.
+
+Neural networks consist of an input layer, an output layer and a number of hidden layers, 
+and each layer consists of a number of nodes.
+
+The nodes in the input layer are fed with 'features', if we take classifying songs as example
+this would be all kinds of information of the songs that can be represented as some form
+of numeric metrics. The amount of BPM of a song could be a metric, or the overall loudness
+of songs. The key of a song is not a good metric because it cannot be represented as a scale,
+e.g. music in A is not more like music in B than like music in G, while in numeric form A would be closer to B and on the other end of G.
+However, the network could have an input for each key: if a song is written in A, the A input is 1 and the other key inputs
+are 0.
+
+The nodes in the hidden layers have nodes with weights for each node in the next layer,
+and the output layers would have a node for each mood, the output nodes output a number representing how likely the song
+is to correspond with that mood.
+
+The weights in the network are initialized randomly, but trained by feeding training data to the network.
+The training data consists of a list of songs along with their respective moods. When the network rightly classifies
+the mood of a song, the weights are updated towards this outcome and vice versa. This way, the neural
+network 'learns' how features relate with eachother, how they affect moods, and eventually how to classify songs to moods.
+
+Sadly, we could not find a proper set of songs with their moods and features that could be linked to the features in our song database.
+If we would have found such set we could have used it as training data for our network, have classified all our songs with the
+trained network and so we could have avoided a cold start for the classification of the songs.
+To compensate for this, we use the rating game as way to let our users classify the songs, and let them
+earn points in the process.
+
+\begin{figure}
+	\centering
+	\def\svgwidth{2in}
+	\input{NeuralNetwork.pdf_tex}
+\end{figure}
