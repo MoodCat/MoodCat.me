@@ -4,7 +4,7 @@ These improvements could not have been implemented due to time constraints, but 
 
 %\begin{enumerate}
 \label{outlook-neural}
-\subsubsection{Song and room suggesstions}
+\section{Song and room suggestions}
 Our initial selling point was a neural-network based suggestion system.
 A neural-network is a system that can classify items based on features and output in one (or few) dimensions.
 In order to train a neural-network, you also need pre-determined labels/expected values for the dimensions.
@@ -16,7 +16,7 @@ Therefore we were unable to train and use our network.
 At the moment users can classify songs and provide the system the expected valence and arousal.
 The weights of the nodes in a network can be trained using the user-data gathered over time, which makes it possible to integrate a network in the future.
 
-\subsubsection{Message polling versus broadcasted events}
+\section{Message polling versus broadcasted events}
 %\item
 Currently all room interactions are based on a status-poll structure between the frontend and backend.
 The backend provides the song that is currently playing and the latest chat messages which the frontend uses to quickly check their status.
@@ -26,7 +26,7 @@ To reduce the network usage, the polling-structure can be replaced with socket e
 Therefore only when there are updates, packets are sent between the frontend and backend.
 This also makes changes more instant as the clients will immediately get notified, instead of on regular intervals.
 
-\subsubsection{User interface}
+\section{User interface}
 %\item
 There are various possible improvements to the user interface.
 
