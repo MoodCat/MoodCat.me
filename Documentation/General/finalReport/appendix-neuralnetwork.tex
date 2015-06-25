@@ -1,0 +1,44 @@
+\chapter{Neural Networks}
+\label{appendix-neural-networks}
+
+One of the bigger issues we had to deal with in MoodCat was to classify the mood of a song.
+The initial plan was to create a neural network that could do this.
+
+Some of the MoodCat team members have followed a course Computational Intelligence,
+where they learned different learning algorithms to solve different kinds of problems.
+One widely used technique to classify objects by using the objects' features as inputs for the neural network.
+
+\section{Structure of the neural network}
+Neural networks consist of an input layer, an output layer and a number of hidden layers.
+Each layer consists of a number of nodes (See also figure \ref{neural-network-graph}).
+The nodes in the input layer are fed with \textit{features}.
+For the classification of songs these would be all sorts of information of the song that can be represented as some form of numeric metrics, for example: the amount of beats per minute (\textbf{BPM}), the average \textbf{loudness} or \textbf{tonality} of the song.
+The key of a song is not an obvious metric as it cannot be represented on a linear scale: music in A has not more in common with \textit{B} than \textit{C} or even \textit{G}, while on a linear scale \textit{A} would deviantly have more in common with \textit{B} than \textit{G}.
+The network could however map the input for each key: if a song is written in \textit{A}, the \textit{A} input is $1$ and the other key inputs are $0$.
+
+The nodes in the hidden layers have nodes with weights for each node in the next layer,
+and the output layers would have a node for each mood, the output nodes output a number representing how likely the song
+is to correspond with that mood.
+
+The weights in the network are initialized randomly and trained by feeding training data to the network.
+The training data consists of a list of songs along with their respective moods.
+When the classification is correct, the network does not do anything.
+However if the classification is incorrect, the weights are updated based on error propagation.
+This way, the neural
+network \textit{learns} how features relate, how they affect moods, and eventually how to classify songs to moods.
+
+\section{Dataset for the neural network}
+Sadly there was no dataset that contained either the song or features of songs and their corresponding moods.
+Therefore we were unable to train the network with the provided data.
+If we would have been able to train the network, we could have avoided the cold start problem the system currently suffers.
+To compensate for this problem, we have designed the rating game.
+The rating game let our users classify the songs.
+In order to stimulate this behaviour, we let them award them with points.
+
+\begin{figure}
+    \caption{Neural network}
+    \label{neural-network-graph}
+	\centering
+	\def\svgwidth{2in}
+	\input{NeuralNetwork.pdf_tex}
+\end{figure}

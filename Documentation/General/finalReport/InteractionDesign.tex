@@ -1,101 +1,88 @@
 \chapter{Human-Computer Interaction}
 
 \section{Introduction}
-This section describes the interaction between MoodCat and one of its users, and how we measured this.
-The user is very important for us, the user is the one that will use the application.
-Our system is build for interaction between users and the system is even learning from user interaction.
-The interaction between users is the chatroom that our music application is build around.
-Users are also involved in actually improving the system.
+In order to evaluate the usability of the system, we have organised various testing sessions with potential users.
+In these testing sessions we used a think-aloud approach in order to gather user feedback.
+First we will elaborate on the claim analysis and what knowledge we expect the user to have.
+Secondly we will explain the setup of the testing sessions and what the outcomes were.
 
-%Beschrijving van de gebruiker en gebruiksituatie
-
-%• Gebruikersverhalen: duidelijk maken wat mensen willen en doen (0)
-%• Conceptuele scenario's: genereren van ideeën en vaststellen van requirements (0)
-%• Concrete scenario’s: Gebruik maken van prototypes en voor evaluatie (1)
-%• Use cases: voor documentatie en implementatie van interactie (3)
-
-\section{The user and their situation}
-
-\subsection{Use case scenarios}
-In this chapter we will elaborate the use cases we have made for our product.
-
-\subsubsection{User wants to play music on the website MoodCat.me.}
-\begin{itemize}
-\item The user goes to moodcat.me in his browser
-\item The user selects the mood they are in
-\item The user clicks next
-\item The user selects a room
-\end{itemize}
-
-\subsubsection{Whilst in a room the user wants to chat}
-If the user is not logged in yet:
-\begin{itemize}
-\item Click on "login" in the top right corner
-\item Click on the connect button
-\end{itemize}
-Everyone:
-\begin{itemize}
-\item The user clicks on the bar which says "type a message".
-\item The user clicks "send"
-\end{itemize}
-
-\subsubsection{User wants to do the classify game}
-\begin{itemize}
-\item User clicks on "Rating game" in the header
-\item User clicks a song
-\item User listens to a song
-\item User selects the appropriate buttons for valence and arousal
-\item User clicks submit
-\item User gets 6 points
-\item User comes back to the menu to click a new song to classify
-\end{itemize}
-
-
-%Beschrijving van context inquiry
-\section{Context inquiry}
-% A contextual inquiry interview is usually structured as an approximately two-hour, one-on-one interaction in which the researcher watches the user do their normal activities and discusses what they see with the user.
-We did a context inquiry with 5 other students a the TU Delft.
-The students joined the same chat room.
-They were separated by some free space, so they would not be influenced by each other.
-We just asked them to play with the system and we would see how they do.
-To see how they experienced the system is quite interesting, a user acts different in the first few minutes of system use, when they're not quite sure what MoodCat is.
-These are two very important aspects.
-First off all we want to bind the user to our system, so he will use it and then we want them to keep using the system.
-So, that the user comes back often, because he likes the system.\\
-They could find almost all the features, they immediately found the rating of the song and the classify game.
-Only the leaderboard, where you come by clicking at the points was a bit too hidden away.
-This is something minor, but we want to change this in the future.
-
-%More about context inquiry
-
-%Beschrijving van product design, claim analyze over gebruik ondersteuned met HCI literatuur
 \section{Product design and claim analysis}
-MoodCat is developed with the end-user as starting point, we tried to make the interface as intuitive as possible.
-The interface should not contain a lot of information, so that the user remains the overview.
-%What to say more
-% Friso: I also don't really see the point of section 5.4. What are your claims, and how does the system you have developed prove them?
+We have various claims on what we expect of the user.
+In this section we will elaborate the two most important claims: user navigation and social interaction.
 
-\subsection{Claim analysis}
-MoodCat is developed for people to enjoy music together with similar minded people.
-We were familiar with Twitch.tv, a streaming platform geared towards games. A big part of their success factor is the fact that users can interact with eachother while watching the stream. In our view this formula could also work with a music stream.
+\subsection{User navigation}
 
-%Beschrijving van een bruikbaarheidsevaluatie uitgevoerd met het product
-\section{Usability evaluation}
-% Friso : Maybe include a links in the footnotes to an explanation on the two methods you name here. I have never heard of them, so some of the other reviewers also might not have.
-\subsection{Cognitive Walkthroughs}
-During the design of the product we did multiple usability evaluations.
-We have done quite a few Cognitive Walkthroughs, with changing possible end-users.
-We done this with the thinking out loud protocol, so we always knew there they where stuck or did not fully understand something.
-When you do not ask people to think out loud, they would sometimes hide some mistakes, which later on can be very important.
-We gave the users the task to explore the functionalities of the system.
-We got some feedback and found that very valuable.
-Mainly, because in an early stage you know what goes wrong and right. 
-So, anticipating on the results is therefore a lot easier than later on.
-\subsection{GOMS}
-At the end of our project we did a Goals, Operators, Methods, and Selection rules analysis (GOMS).
-We asked them to do some task and watched how quickly they preformed these tasks.
-These where the tasks of the Cognitive Walktrough, only split into multiple sections.
-We wanted to see where sometime went wrong. 
-So, not that the user had some difficulties with finding a chatroom, but that they spent longer on the select a mood page than we would expect.
-These more specific failures gave us more information to work with.
+The interface was designed to be minimalistic and intuitive.
+The user should be able to navigate throughout the system without external guidelines or instructions.
 
+We do assume the user is able to understand the ways how to navigate from the mood selection to a room.
+We had several iterations of the state transitions to smooth out the user experience.
+After selecting the moods, rooms appeared on the screen.
+In the evalution some users did not fully understand this and we realized the transition was not clear enough.
+Therefore we changed the behaviour to hide the moods and only show the list of rooms after a mood was selected.
+This resulted in the users understanding the different steps in process of entering a room from a mood.
+
+After changing this, we received additional feedback about the instructions.
+The instructions at the various steps were unclear and could be worded differently.
+We agreed that the instructions could be more fine-grained and decided to place little textboxes on the page.
+These textboxes guide the user, if they require more information.
+Therefore it does not bother users whom already know how to use the system, but will help beginners for which the instructions are aimed.
+
+\subsection{Social interaction}
+
+Users meet in rooms, where music is playing.
+Additionally we created a chat message system that allows users to interact.
+
+We claim that users enjoy or prefer to have social interaction with other users.
+For a part of the potential userbase, listening to music is a social activity.
+Good examples of these activities where this social element shines are festivals and pubs.
+In these places music is played and groups of people enjoy the music together.
+It is not necessary that the persons in the group know each other, as experiencing music is a universal activity.
+
+Our chat system provides the above group the possibility to interact with each other, in order to express their feelings.
+However, the chat system does not bother the user group that does not require social interaction.
+This group usually consists of people who listen to music passively; when they are doing other activities while enjoying music.
+If the user uses MoodCat passively, there is the possibility to hide the  browser from the desktop.
+Therefore the user does not view the page and does not see the chat system either.
+
+We have asked our testers explicitly if they appreciate the placement chatbox.
+In general it did not bother them.
+The purpose of the system was clear and the usage was intuitive.
+So far we have not received a single negative response regarding it and therefore we assume the usage is easy and the results succesful.
+Additionally we saw various users immediately post messages to the rooms they were in, by checking our logs.
+
+Concluding we think the general intention is clear and it is a successful addition to our product.
+
+\section{Context inquiry}
+Moodcat has been used by a group of testers.
+Additionally we supervised 6 testers who tested the system extensively.
+In this section we will explain what the outcome was of the 6 think-out-loud testing sessions.
+
+The first impressions were positive.
+Everyone liked the user interface and the initial look-and-feel.
+After everyone examined the homepage, the next goal was to go in a room.
+Not all the testers were certain what to do at this point and required additional guiding.
+Therefore we decided to add extra text on the various pages to explain how to reach the next step.
+Secondly, the login system was not really noticeable at the beginning.
+We had to explicitly point out that users have the ability to log in to our system.
+In order to stimulate logging in and using the system by its full potential, we added a guiding arrow to point out the login button.
+
+Besides the initial navigation problems, the testers did not have more trouble using and clicking through the system.
+The purpose of the chatbox was clear, even though we did not provide explicit explanations.
+Together with the song information, the general consensus was that the room was nicely  and intuitively designed.
+
+Two of the testers mentioned that it was not clear which moods they selected and which they did not.
+This was mostly related to the fact that the next button was placed as it were a mood.
+We changed the behaviour of the next button to only show when moods are selected.
+This animation implicitly guides users to click the next button when they are satisfied with their mood choices.
+
+Most users also expected visual confirmation that the vote they casted had been received.
+Initially this was only a disabled button.
+We therefore added color changes based on the type of vote, to not only emphasize the succesful vote, but also to remind the user which vote they casted.
+
+Apart from the above points, some small issues were discovered and have been fixed.
+They were mostly related to sizing issues on the various platforms we tested on.
+
+Concluding the developed system is well-received.
+The only ambiguities that became apparent were related to navigation and guidance of the user.
+Additions of small texts and changes in transitions have solved these issues.
