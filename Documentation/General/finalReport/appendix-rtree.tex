@@ -34,7 +34,7 @@ A good example of an application that uses this is OpenStreetMap\footnote{http:/
 They use Postgres spatial indexing (using R-trees) on all elements on their map.
 With this, they decide what they should show at the current zoom level, as well as use it for route planning.
 
-With R-trees we found the solution for our problem to find songs efficiently.
+With \glspl{rtree} we found the solution for our problem to find songs efficiently.
 Every room has a vector, and every song has a vector.
 Both those vectors are indexed with R-trees.
 To find fitting rooms to a given set of moods, we construct a vector from those moods and find the closest rooms in order of closeness.
