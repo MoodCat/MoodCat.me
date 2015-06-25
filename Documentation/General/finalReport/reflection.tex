@@ -78,26 +78,35 @@ Overall, we're all convinced SCRUM is a great way to develop software, however w
 The sprint planning and sprint reflection took up a considerable amount of time in the sprint and the weekly demo forced us to put a difficult issue aside more than once.
 
 \section{Pull-based development and code reviews}
-While developing MoodCat, most of us had our first real encounter with pull-based development.
-This is a technique where you use your versioning system (in our case Git) and it's capability to create branches to its full potential. 
-The basic structure here is:
+Most of us had no experience with pull-based development prior to this project.
+We extensively used this methodology to control our Git usage.
+
+To procedure we used is as follows:
 \begin{itemize}
-\item The Product Owner picks tickets from the product backlog and puts them on the sprint backlog.
-\item A ticket on the sprint backlog gets assigned to a team member. 
-This team member is now responsible for making sure the ticket will be fixed in time.
-\item The assigned team member (possibly with the help of other members) writes code to fix the issue described in the ticket.
-\item The assigned team member opens a Pull-Request (PR). 
-This is a formal request to merge the branch containing his/her fix for the issue into the master branch.
-\item Other team members review the code in a static and a dynamic fashion, looking for errors, improvements or discussion points. 
-Additionally, the Continuous Integration (CI) server tries to build the branch to make sure no tests fail and everything goes as expected on a clean system.
-\item The assigned team member responds to the feedback, either explaining why his/her solution is better than what was proposed by the review, or fixing the code that has been marked as "not good enough" or wrong.
-\item Once all feedback has been dealt with, and the code changes are approved, the PR is accepted and merged into master.
+\item A team member (possibly with the help of other members) writes code.
+This can either be the fix to an issue, or the implementation of an enhancement/feature described in a ticket.
+The code is committed to a seperate GIT branch.
+
+\item The team member opens a Pull-Request (PR). 
+This is a formal request to merge the branch into a different branch.
+The default branch to merge into is the master branch.
+
+\item Other team members review the code in a static and a dynamic fashion.
+They look for errors, improvements or discussion points. 
+Additionally, the Continuous Integration (CI) server builds the branch to make sure no tests fail.
+
+\item The assigned team member responds to the feedback.
+The team member can explain the reasoning behind the code contributions and process the feedback by altering the code.
+
+\item The PR is accepted once all feedback has been processed and the code changes are approved.
 \end{itemize}
 
-This process worked really well for us, we all make mistakes and the PR review catches most of those. 
-In the first few weeks the reviews were a bit shallow, because we were still not sure what the best way to go about it was. 
-Later in the project, our PRs went more in depth and functional. 
-All of us are confident that this workflow enhances both our code quality and codebase, and all of us will use this approach in the future.
+Overall we are pleased with how we were able to use Pull-Requests.
+In the beginning, we left Pull-Requests open for too long.
+This caused unnecessary problems with merging, as there were a lot of conflicting line edits.
+We quickly realized that we would run into time problems.
+Therefore we decided Pull-Requests should be merged as soon as 2 team members agree.
+We applied this in practice and the results were a lot better than from the first weeks.
 
 \section{Use of libaries and languages}
 We have used quite a lot of languages and libraries.
