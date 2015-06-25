@@ -77,6 +77,28 @@ We did continue past 15 minutes a few times, but usually with a smaller group fo
 Overall, we're all convinced SCRUM is a great way to develop software, however we think that a sprint could better last 2 or 3 weeks instead of one.
 The sprint planning and sprint reflection took up a considerable amount of time in the sprint and the weekly demo forced us to put a difficult issue aside more than once.
 
+\section{Pull-based development and code reviews}
+While developing MoodCat, most of us had our first real encounter with pull-based development.
+This is a technique where you use your versioning system (in our case Git) and it's capability to create branches to its full potential. 
+The basic structure here is:
+\begin{itemize}
+\item The Product Owner picks tickets from the product backlog and puts them on the sprint backlog.
+\item A ticket on the sprint backlog gets assigned to a team member. 
+This team member is now responsible for making sure the ticket will be fixed in time.
+\item The assigned team member (possibly with the help of other members) writes code to fix the issue described in the ticket.
+\item The assigned team member opens a Pull-Request (PR). 
+This is a formal request to merge the branch containing his/her fix for the issue into the master branch.
+\item Other team members review the code in a static and a dynamic fashion, looking for errors, improvements or discussion points. 
+Additionally, the Continuous Integration (CI) server tries to build the branch to make sure no tests fail and everything goes as expected on a clean system.
+\item The assigned team member responds to the feedback, either explaining why his/her solution is better than what was proposed by the review, or fixing the code that has been marked as "not good enough" or wrong.
+\item Once all feedback has been dealt with, and the code changes are approved, the PR is accepted and merged into master.
+\end{itemize}
+
+This process worked really well for us, we all make mistakes and the PR review catches most of those. 
+In the first few weeks the reviews were a bit shallow, because we were still not sure what the best way to go about it was. 
+Later in the project, our PRs went more in depth and functional. 
+All of us are confident that this workflow enhances both our code quality and codebase, and all of us will use this approach in the future.
+
 \section{Use of libaries and languages}
 We have used quite a lot of languages and libraries.
 To get a clear view of what belongs where, we split the system in our three components.
