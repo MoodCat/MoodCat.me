@@ -113,8 +113,8 @@ We're using Hibernate for ORM (Object-relational mapping).
 This allows us to transparently "store" Java objects in the database.
 Tables are generated according to the fields defined in the entities.
 
-In order to quickly select songs or rooms from the database, based on their vector, we use a RTREE as spatial index.
-In order to enable RTREEs in our database and backend, we use Hibernate Spatial.
+In order to quickly select songs or rooms from the database, based on their vector, we use a \gls{rtree} spatial index.
+In order to enable  \glspl{rtree} in our database and backend, we use Hibernate Spatial.
 
 In order to ease the development process, we use two more dependencies:
 To simulate a postgres database during testing, we're using H2 (with Hatbox for spatial query support).

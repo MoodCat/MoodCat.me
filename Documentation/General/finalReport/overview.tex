@@ -28,11 +28,13 @@ The backend provides models, of which the fields are sent through the API as gen
 The models represent the inner content of the entities in the database.
 
 \section{Mapping moods}
+\label{mapping-moods}
 In order to compare rooms, moods and songs we use valence arousal vectors.
 Every mood is mapped by a 2 dimensional vector of valence and arousal, both of which have values between -1 and 1.
 Each room has its own vector which is used to determine which room to suggest based on the selection of moods.
 In order to queue up new songs for a room, the backend will fetch new songs that have vectors close to the room's vector.
-The database uses a RTREE spatial index to quickly calculate distances and order the songs accordingly.
+The database uses a \gls{rtree} spatial index to quickly calculate distances and order the songs accordingly.
+The indexing method is further described in the appendix \ref{appendix:rtree}.
 The songs are mapped to vectors through a user feedback system.
 When a user likes a song that plays in the room, the song can be upvoted.
 The system then knows this song fits in the room.
