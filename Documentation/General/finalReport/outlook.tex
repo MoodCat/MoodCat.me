@@ -16,7 +16,7 @@ At the moment users can classify songs and provide the system the expected valen
 The weights of the nodes in a network can be trained using the user-data gathered over time, which makes it possible to integrate a network in the future.
 
 \section{Message polling versus broadcasted events}
-Currently all room interactions are based on a status-poll structure between the frontend and backend.
+Currently all room interactions are based on a \gls{polling} structure between the frontend and backend.
 The backend provides the song that is currently playing and the latest chat messages which the frontend uses to quickly check their status.
 This unnecessarily stresses the network connection, as most calls do not contain additional information the frontend did not have yet.
 
